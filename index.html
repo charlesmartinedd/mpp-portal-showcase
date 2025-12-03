@@ -121,6 +121,7 @@
             font-weight: 500;
             cursor: pointer;
             transition: var(--transition);
+            text-decoration: none;
         }
 
         .training-btn:hover {
@@ -248,59 +249,94 @@
             visibility: visible;
         }
 
-        /* Screenshot Modal */
-        .screenshot-modal {
-            position: relative;
-            max-width: 90vw;
-            max-height: 85vh;
+        /* Summary Modal */
+        .summary-modal {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            transform: scale(0.95) translateY(20px);
+            transition: var(--transition);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .modal-overlay.active .summary-modal {
+            transform: scale(1) translateY(0);
+        }
+
+        .summary-header {
             display: flex;
-            flex-direction: column;
             align-items: center;
-            transform: scale(0.95);
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .summary-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .summary-number {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent);
+            background: rgba(88, 166, 255, 0.15);
+            padding: 4px 12px;
+            border-radius: 8px;
+        }
+
+        .summary-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            text-align: left;
+        }
+
+        .view-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, var(--accent) 0%, #8b5cf6 100%);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
             transition: var(--transition);
         }
 
-        .modal-overlay.active .screenshot-modal {
-            transform: scale(1);
+        .view-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px var(--accent-glow);
         }
 
-        .modal-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 16px;
-            color: var(--text-primary);
+        .view-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .summary-nav {
             display: flex;
             align-items: center;
-            gap: 12px;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-color);
         }
 
-        .modal-title .card-number {
-            font-size: 0.875rem;
-        }
-
-        .modal-image-container {
-            position: relative;
-            max-width: 100%;
-            max-height: calc(85vh - 80px);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
-        }
-
-        .modal-image-container img {
-            max-width: 100%;
-            max-height: calc(85vh - 80px);
-            object-fit: contain;
-            display: block;
-        }
-
-        /* Modal Navigation */
-        .modal-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 48px;
-            height: 48px;
+        .summary-nav-btn {
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -310,25 +346,141 @@
             align-items: center;
             justify-content: center;
             transition: var(--transition);
-            backdrop-filter: blur(10px);
         }
 
-        .modal-nav:hover {
+        .summary-nav-btn:hover {
             background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-50%) scale(1.1);
+            transform: scale(1.1);
         }
 
-        .modal-nav.prev {
-            left: -70px;
+        .summary-nav-btn svg {
+            width: 20px;
+            height: 20px;
         }
 
-        .modal-nav.next {
-            right: -70px;
+        .summary-counter {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
         }
 
-        .modal-nav svg {
-            width: 24px;
-            height: 24px;
+        /* Screenshot Viewer */
+        .screenshot-viewer {
+            width: 95vw;
+            max-width: 1400px;
+            height: 90vh;
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transform: scale(0.95);
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active .screenshot-viewer {
+            transform: scale(1);
+        }
+
+        .viewer-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            flex-shrink: 0;
+        }
+
+        .viewer-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .viewer-title span {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .viewer-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .back-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .viewer-image-container {
+            flex: 1;
+            overflow-y: auto;
+            background: #f5f5f5;
+        }
+
+        .viewer-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .viewer-footer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 16px 24px;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            flex-shrink: 0;
+        }
+
+        .viewer-nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .viewer-nav-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .viewer-nav-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .viewer-counter {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
         }
 
         /* Close Button */
@@ -358,27 +510,6 @@
         .modal-close svg {
             width: 20px;
             height: 20px;
-        }
-
-        /* Articulate Modal */
-        .articulate-modal {
-            width: 95vw;
-            height: 90vh;
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            transform: scale(0.95);
-            transition: var(--transition);
-        }
-
-        .modal-overlay.active .articulate-modal {
-            transform: scale(1);
-        }
-
-        .articulate-modal iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
         }
 
         /* Keyboard hint */
@@ -430,12 +561,16 @@
                 gap: 12px;
             }
 
-            .modal-nav.prev {
-                left: 10px;
+            .summary-modal {
+                padding: 24px;
             }
 
-            .modal-nav.next {
-                right: 10px;
+            .summary-title {
+                font-size: 1.25rem;
+            }
+
+            .summary-text {
+                font-size: 1rem;
             }
         }
 
@@ -466,12 +601,12 @@
                 <button class="lang-btn active" data-lang="en">EN</button>
                 <button class="lang-btn" data-lang="es">ES</button>
             </div>
-            <button class="training-btn" id="openTraining">
+            <a href="https://share.articulate.com/A0kOkSnOtde0IaEsWUoZh" target="_blank" rel="noopener noreferrer" class="training-btn">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <polygon points="5 3 19 12 5 21 5 3"/>
                 </svg>
                 <span>Training Course</span>
-            </button>
+            </a>
         </div>
     </header>
 
@@ -484,26 +619,33 @@
         <span>MPP Portal Prototype</span>
     </footer>
 
-    <!-- Screenshot Modal -->
-    <div class="modal-overlay" id="screenshotModal">
-        <button class="modal-close" id="closeScreenshot">
+    <!-- Summary Modal -->
+    <div class="modal-overlay" id="summaryModal">
+        <button class="modal-close" id="closeSummary">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M18 6L6 18M6 6l12 12"/>
             </svg>
         </button>
-        <div class="screenshot-modal">
-            <div class="modal-title">
-                <span id="modalTitle">Homepage</span>
-                <span class="card-number" id="modalNumber">1</span>
+        <div class="summary-modal">
+            <div class="summary-header">
+                <span class="summary-title" id="summaryTitle">Homepage</span>
+                <span class="summary-number" id="summaryNumber">1</span>
             </div>
-            <div class="modal-image-container">
-                <button class="modal-nav prev" id="prevScreenshot">
+            <p class="summary-text" id="summaryText"></p>
+            <button class="view-btn" id="viewScreenshot">
+                <span id="viewBtnText">View Screenshot</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </button>
+            <div class="summary-nav">
+                <button class="summary-nav-btn" id="summaryPrev">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M15 18l-6-6 6-6"/>
                     </svg>
                 </button>
-                <img id="modalImage" src="" alt="">
-                <button class="modal-nav next" id="nextScreenshot">
+                <span class="summary-counter" id="summaryCounter">1 of 18</span>
+                <button class="summary-nav-btn" id="summaryNext">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M9 18l6-6-6-6"/>
                     </svg>
@@ -516,40 +658,233 @@
         </div>
     </div>
 
-    <!-- Articulate Modal -->
-    <div class="modal-overlay" id="articulateModal">
-        <button class="modal-close" id="closeArticulate">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M18 6L6 18M6 6l12 12"/>
-            </svg>
-        </button>
-        <div class="articulate-modal">
-            <iframe id="articulateFrame" src="" allowfullscreen></iframe>
+    <!-- Screenshot Viewer -->
+    <div class="modal-overlay" id="viewerModal">
+        <div class="screenshot-viewer">
+            <div class="viewer-header">
+                <div class="viewer-title">
+                    <span id="viewerTitle">Homepage</span>
+                    <span class="summary-number" id="viewerNumber">1</span>
+                </div>
+                <div class="viewer-actions">
+                    <button class="back-btn" id="backToSummary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        <span id="backBtnText">Back</span>
+                    </button>
+                    <button class="modal-close" id="closeViewer" style="position: static; width: 36px; height: 36px;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 6L6 18M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="viewer-image-container">
+                <img id="viewerImage" src="" alt="">
+            </div>
+            <div class="viewer-footer">
+                <button class="viewer-nav-btn" id="viewerPrev">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 18l-6-6 6-6"/>
+                    </svg>
+                    <span id="prevBtnText">Previous</span>
+                </button>
+                <span class="viewer-counter" id="viewerCounter">1 of 18</span>
+                <button class="viewer-nav-btn" id="viewerNext">
+                    <span id="nextBtnText">Next</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                </button>
+            </div>
         </div>
     </div>
 
     <script>
-        // Screenshot data
+        // Screenshot data with bilingual content
         const screenshots = [
-            { id: 1, file: '01-homepage', title: 'Homepage' },
-            { id: 2, file: '02-login', title: 'Login' },
-            { id: 3, file: '03-login-gov', title: 'Login.gov' },
-            { id: 4, file: '04-dashboard', title: 'Dashboard' },
-            { id: 5, file: '05-applications', title: 'Applications' },
-            { id: 6, file: '06-applications-eccalon', title: 'Applications - Eccalon' },
-            { id: 7, file: '07-about-mpp', title: 'About MPP' },
-            { id: 8, file: '08-mentors', title: 'Mentors' },
-            { id: 9, file: '09-proteges', title: 'Proteges' },
-            { id: 10, file: '10-agreements-reports', title: 'Agreements & Reports' },
-            { id: 11, file: '11-resources', title: 'Resources' },
-            { id: 12, file: '12-approved-mentors', title: 'Approved Mentors' },
-            { id: 13, file: '13-interested-proteges', title: 'Interested Proteges' },
-            { id: 14, file: '14-authorized-subcontractors', title: 'Authorized Subcontractors' },
-            { id: 15, file: '15-team-information', title: 'Team Information' },
-            { id: 16, file: '16-edit-company-profile', title: 'Edit Company Profile' },
-            { id: 17, file: '17-feedback', title: 'Feedback' },
-            { id: 18, file: '18-faq', title: 'FAQ' }
+            {
+                id: 1,
+                file: '01-homepage',
+                title: { en: 'Homepage', es: 'Pagina Principal' },
+                summary: {
+                    en: 'The public-facing welcome page for the DoD Mentor-Protege Program Portal. It introduces the program benefits for both Mentors and Proteges, highlights the annual MPP Summit networking event, and provides quick access to login and registration. Visitors can learn how mentors help small businesses grow and how proteges receive guidance from top Prime Contractors.',
+                    es: 'La pagina de bienvenida publica del Portal del Programa Mentor-Protege del DoD. Presenta los beneficios del programa tanto para Mentores como para Proteges, destaca el evento anual de networking MPP Summit, y proporciona acceso rapido al inicio de sesion y registro. Los visitantes pueden aprender como los mentores ayudan a crecer a las pequenas empresas.'
+                }
+            },
+            {
+                id: 2,
+                file: '02-login',
+                title: { en: 'Login', es: 'Inicio de Sesion' },
+                summary: {
+                    en: 'The secure login page with an important legal disclaimer about accessing a U.S. Government system. Users must acknowledge they understand the system monitors communications and that data may be inspected. After accepting, users proceed to Login.gov for authentication.',
+                    es: 'La pagina de inicio de sesion seguro con un aviso legal importante sobre el acceso a un sistema del Gobierno de EE.UU. Los usuarios deben reconocer que el sistema monitorea comunicaciones y que los datos pueden ser inspeccionados. Despues de aceptar, los usuarios proceden a Login.gov para autenticacion.'
+                }
+            },
+            {
+                id: 3,
+                file: '03-login-gov',
+                title: { en: 'Login.gov', es: 'Login.gov' },
+                summary: {
+                    en: 'The federal authentication service used to verify user identity. Login.gov provides secure, single sign-on access to government services using multi-factor authentication. Users create one account to access multiple federal websites securely.',
+                    es: 'El servicio de autenticacion federal utilizado para verificar la identidad del usuario. Login.gov proporciona acceso seguro con inicio de sesion unico a servicios gubernamentales mediante autenticacion multifactor. Los usuarios crean una cuenta para acceder a multiples sitios web federales de forma segura.'
+                }
+            },
+            {
+                id: 4,
+                file: '04-dashboard',
+                title: { en: 'Dashboard', es: 'Panel de Control' },
+                summary: {
+                    en: 'Your personalized MPP Portal home screen after logging in. It displays a welcome message, quick-access cards for Agreements, Applications, Resources, and Team Information. The dashboard also shows paths to become a Mentor or Protege with summary statistics of your active agreements.',
+                    es: 'Su pantalla de inicio personalizada del Portal MPP despues de iniciar sesion. Muestra un mensaje de bienvenida, tarjetas de acceso rapido para Acuerdos, Aplicaciones, Recursos e Informacion del Equipo, ademas de estadisticas de sus acuerdos activos.'
+                }
+            },
+            {
+                id: 5,
+                file: '05-applications',
+                title: { en: 'Applications', es: 'Solicitudes' },
+                summary: {
+                    en: 'View and manage your MPP program applications. This screen shows the status of submitted applications including submission date, approval date, and current status. Archived applications are also accessible for historical reference.',
+                    es: 'Ver y administrar sus solicitudes del programa MPP. Esta pantalla muestra el estado de las solicitudes enviadas, incluyendo fecha de envio, fecha de aprobacion y estado actual. Las solicitudes archivadas tambien estan accesibles para referencia historica.'
+                }
+            },
+            {
+                id: 6,
+                file: '06-applications-eccalon',
+                title: { en: 'Applications - Eccalon', es: 'Solicitudes - Eccalon' },
+                summary: {
+                    en: 'A detailed view of Eccalon LLC\'s approved application showing company information and approval status. This example demonstrates how approved Mentor or Protege applications appear in the system with submission and approval timestamps.',
+                    es: 'Una vista detallada de la solicitud aprobada de Eccalon LLC mostrando informacion de la empresa y estado de aprobacion. Este ejemplo demuestra como aparecen las solicitudes aprobadas de Mentor o Protege en el sistema.'
+                }
+            },
+            {
+                id: 7,
+                file: '07-about-mpp',
+                title: { en: 'About MPP', es: 'Acerca del MPP' },
+                summary: {
+                    en: 'Comprehensive information about the Mentor-Protege Program including how mentors shape careers and foster defense industry connections. This page outlines the 7-step process to participate, lists major Prime Contractor partners like SAIC, IBM, and Raytheon, and explains benefits for both parties.',
+                    es: 'Informacion completa sobre el Programa Mentor-Protege incluyendo como los mentores forman carreras y fomentan conexiones en la industria de defensa. Esta pagina describe el proceso de 7 pasos para participar y lista los principales socios contratistas.'
+                }
+            },
+            {
+                id: 8,
+                file: '08-mentors',
+                title: { en: 'Mentors', es: 'Mentores' },
+                summary: {
+                    en: 'Information for companies interested in becoming an MPP Mentor. It outlines the basic requirements including having active subcontracting plans, $25M+ in DoD contracts, and federal contract eligibility. The page shows a simple 3-step application process and lists participating Prime Contractors.',
+                    es: 'Informacion para empresas interesadas en convertirse en Mentor del MPP. Describe los requisitos basicos incluyendo planes de subcontratacion activos, mas de $25M en contratos del DoD, y elegibilidad para contratos federales.'
+                }
+            },
+            {
+                id: 9,
+                file: '09-proteges',
+                title: { en: 'Proteges', es: 'Proteges' },
+                summary: {
+                    en: 'Resources for small businesses seeking mentorship through the MPP program. Proteges connect with industry experts from top Prime Contractors and receive guidance on technical management, administrative assistance, training, and business development to grow their capabilities.',
+                    es: 'Recursos para pequenas empresas que buscan mentoria a traves del programa MPP. Los proteges se conectan con expertos de la industria de los principales contratistas y reciben orientacion en gestion tecnica, asistencia administrativa y desarrollo empresarial.'
+                }
+            },
+            {
+                id: 10,
+                file: '10-agreements-reports',
+                title: { en: 'Agreements & Reports', es: 'Acuerdos e Informes' },
+                summary: {
+                    en: 'The central hub for managing Mentor-Protege agreements. Features a Quick Start wizard to complete required pathways, displays all active agreements with their status (In Process, Active, Invited), and includes a calendar for upcoming report deadlines. Mentors can invite new Proteges from this screen.',
+                    es: 'El centro principal para administrar acuerdos Mentor-Protege. Incluye un asistente de Inicio Rapido, muestra todos los acuerdos activos con su estado, e incluye un calendario para proximas fechas limite de informes. Los mentores pueden invitar nuevos proteges desde aqui.'
+                }
+            },
+            {
+                id: 11,
+                file: '11-resources',
+                title: { en: 'Resources', es: 'Recursos' },
+                summary: {
+                    en: 'A comprehensive library of MPP program resources and documentation. Quick links to Approved Mentors, Interested Proteges, and Authorized Subcontractors directories. Includes downloadable templates for Monthly Execution Reports, Agreement Checklists, and links to DFARS regulations and OSBP contacts.',
+                    es: 'Una biblioteca completa de recursos y documentacion del programa MPP. Enlaces rapidos a directorios de Mentores Aprobados, Proteges Interesados y Subcontratistas Autorizados. Incluye plantillas descargables para informes y enlaces a regulaciones DFARS.'
+                }
+            },
+            {
+                id: 12,
+                file: '12-approved-mentors',
+                title: { en: 'Approved Mentors', es: 'Mentores Aprobados' },
+                summary: {
+                    en: 'A searchable directory of all approved Mentor companies in the MPP program. Users can browse mentors by name, industry, or capabilities to find potential partnership opportunities. Contact information and company profiles are available for approved mentors.',
+                    es: 'Un directorio de busqueda de todas las empresas Mentoras aprobadas en el programa MPP. Los usuarios pueden buscar mentores por nombre, industria o capacidades para encontrar oportunidades de asociacion.'
+                }
+            },
+            {
+                id: 13,
+                file: '13-interested-proteges',
+                title: { en: 'Interested Proteges', es: 'Proteges Interesados' },
+                summary: {
+                    en: 'A directory of small businesses actively seeking mentorship. Mentors can browse this list to find potential Protege partners that align with their subcontracting goals and technical requirements. Each listing includes company capabilities and contact information.',
+                    es: 'Un directorio de pequenas empresas que buscan activamente mentoria. Los mentores pueden explorar esta lista para encontrar potenciales socios proteges que se alineen con sus objetivos de subcontratacion y requisitos tecnicos.'
+                }
+            },
+            {
+                id: 14,
+                file: '14-authorized-subcontractors',
+                title: { en: 'Authorized Subcontractors', es: 'Subcontratistas Autorizados' },
+                summary: {
+                    en: 'A searchable database of authorized subcontractors available to support government contracting needs. Users can search, view profiles, and download contact information for qualified small businesses ready to participate in federal contracts.',
+                    es: 'Una base de datos de subcontratistas autorizados disponibles para apoyar necesidades de contratacion gubernamental. Los usuarios pueden buscar, ver perfiles y descargar informacion de contacto de pequenas empresas calificadas.'
+                }
+            },
+            {
+                id: 15,
+                file: '15-team-information',
+                title: { en: 'Team Information', es: 'Informacion del Equipo' },
+                summary: {
+                    en: 'Manage your company\'s team members and view all active agreement partnerships. The top section shows your company team with contact details, while the bottom displays all Mentor-Protege agreement teams with their current status and quick links to each agreement.',
+                    es: 'Administre los miembros del equipo de su empresa y vea todas las asociaciones de acuerdos activos. La seccion superior muestra su equipo con detalles de contacto, mientras que la inferior muestra todos los equipos de acuerdos Mentor-Protege.'
+                }
+            },
+            {
+                id: 16,
+                file: '16-edit-company-profile',
+                title: { en: 'Edit Company Profile', es: 'Editar Perfil de Empresa' },
+                summary: {
+                    en: 'Update your organization\'s profile information including company name, address, contact details, and business capabilities. Keeping your profile current ensures accurate representation in the MPP directories and helps potential partners find you.',
+                    es: 'Actualice la informacion del perfil de su organizacion incluyendo nombre, direccion, datos de contacto y capacidades comerciales. Mantener su perfil actualizado asegura una representacion precisa en los directorios del MPP.'
+                }
+            },
+            {
+                id: 17,
+                file: '17-feedback',
+                title: { en: 'Feedback', es: 'Comentarios' },
+                summary: {
+                    en: 'Submit feedback, suggestions, or report issues directly to the MPP program team. This form allows users to share their experience, request features, or get help with portal functionality. Your input helps improve the program for all participants.',
+                    es: 'Envie comentarios, sugerencias o reporte problemas directamente al equipo del programa MPP. Este formulario permite compartir su experiencia, solicitar funciones u obtener ayuda con la funcionalidad del portal.'
+                }
+            },
+            {
+                id: 18,
+                file: '18-faq',
+                title: { en: 'FAQ', es: 'Preguntas Frecuentes' },
+                summary: {
+                    en: 'Frequently Asked Questions about the MPP program covering eligibility requirements, application processes, agreement types, and reporting requirements. Topics include mentor qualifications, protege eligibility, credit vs. reimbursement agreements, and program acronyms with definitions.',
+                    es: 'Preguntas Frecuentes sobre el programa MPP que cubren requisitos de elegibilidad, procesos de solicitud, tipos de acuerdos y requisitos de informes. Los temas incluyen calificaciones de mentores, elegibilidad de proteges y definiciones de acronimos.'
+                }
+            }
         ];
+
+        // UI text translations
+        const uiText = {
+            en: {
+                viewScreenshot: 'View Screenshot',
+                back: 'Back',
+                previous: 'Previous',
+                next: 'Next',
+                of: 'of'
+            },
+            es: {
+                viewScreenshot: 'Ver Captura',
+                back: 'Volver',
+                previous: 'Anterior',
+                next: 'Siguiente',
+                of: 'de'
+            }
+        };
 
         // State
         let currentLang = localStorage.getItem('mpp-lang') || 'en';
@@ -557,12 +892,24 @@
 
         // Elements
         const grid = document.getElementById('screenshotGrid');
-        const screenshotModal = document.getElementById('screenshotModal');
-        const articulateModal = document.getElementById('articulateModal');
-        const modalImage = document.getElementById('modalImage');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalNumber = document.getElementById('modalNumber');
-        const articulateFrame = document.getElementById('articulateFrame');
+        const summaryModal = document.getElementById('summaryModal');
+        const viewerModal = document.getElementById('viewerModal');
+
+        // Summary modal elements
+        const summaryTitle = document.getElementById('summaryTitle');
+        const summaryNumber = document.getElementById('summaryNumber');
+        const summaryText = document.getElementById('summaryText');
+        const summaryCounter = document.getElementById('summaryCounter');
+        const viewBtnText = document.getElementById('viewBtnText');
+
+        // Viewer modal elements
+        const viewerTitle = document.getElementById('viewerTitle');
+        const viewerNumber = document.getElementById('viewerNumber');
+        const viewerImage = document.getElementById('viewerImage');
+        const viewerCounter = document.getElementById('viewerCounter');
+        const backBtnText = document.getElementById('backBtnText');
+        const prevBtnText = document.getElementById('prevBtnText');
+        const nextBtnText = document.getElementById('nextBtnText');
 
         // Initialize language toggle
         function initLangToggle() {
@@ -579,11 +926,24 @@
                     buttons.forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
                     renderGrid();
-                    if (screenshotModal.classList.contains('active')) {
-                        updateModal();
+                    updateUIText();
+                    if (summaryModal.classList.contains('active')) {
+                        updateSummaryModal();
+                    }
+                    if (viewerModal.classList.contains('active')) {
+                        updateViewerModal();
                     }
                 });
             });
+        }
+
+        // Update UI text based on language
+        function updateUIText() {
+            const text = uiText[currentLang];
+            viewBtnText.textContent = text.viewScreenshot;
+            backBtnText.textContent = text.back;
+            prevBtnText.textContent = text.previous;
+            nextBtnText.textContent = text.next;
         }
 
         // Get image path
@@ -591,13 +951,18 @@
             return `images/${currentLang}/${file}.png`;
         }
 
+        // Get counter text
+        function getCounterText(index) {
+            return `${index + 1} ${uiText[currentLang].of} ${screenshots.length}`;
+        }
+
         // Render grid
         function renderGrid() {
             grid.innerHTML = screenshots.map((s, index) => `
                 <div class="card" data-index="${index}">
-                    <img src="${getImagePath(s.file)}" alt="${s.title}" loading="lazy">
+                    <img src="${getImagePath(s.file)}" alt="${s.title[currentLang]}" loading="lazy">
                     <div class="card-overlay">
-                        <span class="card-title">${s.title}</span>
+                        <span class="card-title">${s.title[currentLang]}</span>
                         <span class="card-number">${s.id}</span>
                     </div>
                 </div>
@@ -607,30 +972,62 @@
             document.querySelectorAll('.card').forEach(card => {
                 card.addEventListener('click', () => {
                     currentIndex = parseInt(card.dataset.index);
-                    openScreenshotModal();
+                    openSummaryModal();
                 });
             });
         }
 
-        // Update modal content
-        function updateModal() {
+        // Update summary modal content
+        function updateSummaryModal() {
             const s = screenshots[currentIndex];
-            modalImage.src = getImagePath(s.file);
-            modalTitle.textContent = s.title;
-            modalNumber.textContent = s.id;
+            summaryTitle.textContent = s.title[currentLang];
+            summaryNumber.textContent = s.id;
+            summaryText.textContent = s.summary[currentLang];
+            summaryCounter.textContent = getCounterText(currentIndex);
         }
 
-        // Open screenshot modal
-        function openScreenshotModal() {
-            updateModal();
-            screenshotModal.classList.add('active');
+        // Update viewer modal content
+        function updateViewerModal() {
+            const s = screenshots[currentIndex];
+            viewerTitle.textContent = s.title[currentLang];
+            viewerNumber.textContent = s.id;
+            viewerImage.src = getImagePath(s.file);
+            viewerCounter.textContent = getCounterText(currentIndex);
+            // Scroll to top when changing images
+            document.querySelector('.viewer-image-container').scrollTop = 0;
+        }
+
+        // Open summary modal
+        function openSummaryModal() {
+            updateSummaryModal();
+            updateUIText();
+            summaryModal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
-        // Close screenshot modal
-        function closeScreenshotModal() {
-            screenshotModal.classList.remove('active');
+        // Close summary modal
+        function closeSummaryModal() {
+            summaryModal.classList.remove('active');
             document.body.style.overflow = '';
+        }
+
+        // Open viewer modal
+        function openViewerModal() {
+            summaryModal.classList.remove('active');
+            updateViewerModal();
+            viewerModal.classList.add('active');
+        }
+
+        // Close viewer modal
+        function closeViewerModal() {
+            viewerModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Back to summary from viewer
+        function backToSummary() {
+            viewerModal.classList.remove('active');
+            summaryModal.classList.add('active');
         }
 
         // Navigate screenshots
@@ -638,53 +1035,54 @@
             currentIndex += direction;
             if (currentIndex < 0) currentIndex = screenshots.length - 1;
             if (currentIndex >= screenshots.length) currentIndex = 0;
-            updateModal();
-        }
 
-        // Open Articulate modal
-        function openArticulateModal() {
-            articulateFrame.src = 'https://share.articulate.com/A0kOkSnOtde0IaEsWUoZh';
-            articulateModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        // Close Articulate modal
-        function closeArticulateModal() {
-            articulateModal.classList.remove('active');
-            articulateFrame.src = '';
-            document.body.style.overflow = '';
+            if (summaryModal.classList.contains('active')) {
+                updateSummaryModal();
+            }
+            if (viewerModal.classList.contains('active')) {
+                updateViewerModal();
+            }
         }
 
         // Event listeners
-        document.getElementById('closeScreenshot').addEventListener('click', closeScreenshotModal);
-        document.getElementById('closeArticulate').addEventListener('click', closeArticulateModal);
-        document.getElementById('prevScreenshot').addEventListener('click', () => navigate(-1));
-        document.getElementById('nextScreenshot').addEventListener('click', () => navigate(1));
-        document.getElementById('openTraining').addEventListener('click', openArticulateModal);
+        document.getElementById('closeSummary').addEventListener('click', closeSummaryModal);
+        document.getElementById('closeViewer').addEventListener('click', closeViewerModal);
+        document.getElementById('viewScreenshot').addEventListener('click', openViewerModal);
+        document.getElementById('backToSummary').addEventListener('click', backToSummary);
+
+        document.getElementById('summaryPrev').addEventListener('click', () => navigate(-1));
+        document.getElementById('summaryNext').addEventListener('click', () => navigate(1));
+        document.getElementById('viewerPrev').addEventListener('click', () => navigate(-1));
+        document.getElementById('viewerNext').addEventListener('click', () => navigate(1));
 
         // Modal backdrop clicks
-        screenshotModal.addEventListener('click', (e) => {
-            if (e.target === screenshotModal) closeScreenshotModal();
+        summaryModal.addEventListener('click', (e) => {
+            if (e.target === summaryModal) closeSummaryModal();
         });
-        articulateModal.addEventListener('click', (e) => {
-            if (e.target === articulateModal) closeArticulateModal();
+        viewerModal.addEventListener('click', (e) => {
+            if (e.target === viewerModal) closeViewerModal();
         });
 
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
-            if (screenshotModal.classList.contains('active')) {
-                if (e.key === 'Escape') closeScreenshotModal();
+            if (summaryModal.classList.contains('active')) {
+                if (e.key === 'Escape') closeSummaryModal();
                 if (e.key === 'ArrowLeft') navigate(-1);
                 if (e.key === 'ArrowRight') navigate(1);
+                if (e.key === 'Enter') openViewerModal();
             }
-            if (articulateModal.classList.contains('active')) {
-                if (e.key === 'Escape') closeArticulateModal();
+            if (viewerModal.classList.contains('active')) {
+                if (e.key === 'Escape') closeViewerModal();
+                if (e.key === 'ArrowLeft') navigate(-1);
+                if (e.key === 'ArrowRight') navigate(1);
+                if (e.key === 'Backspace') backToSummary();
             }
         });
 
         // Initialize
         initLangToggle();
         renderGrid();
+        updateUIText();
     </script>
 </body>
 </html>
