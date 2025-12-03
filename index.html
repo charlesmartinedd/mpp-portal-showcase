@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPP Portal Overview</title>
+    <style>
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-card: rgba(30, 37, 46, 0.8);
+            --border-color: rgba(48, 54, 61, 0.8);
+            --text-primary: #f0f6fc;
+            --text-secondary: #8b949e;
+            --accent: #58a6ff;
+            --accent-glow: rgba(88, 166, 255, 0.3);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+            background: var(--bg-primary);
+            background-image:
+                radial-gradient(ellipse at top left, rgba(88, 166, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom right, rgba(139, 92, 246, 0.06) 0%, transparent 50%);
+            color: var(--text-primary);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+            height: 60px;
+            background: rgba(13, 17, 23, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            flex-shrink: 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo svg {
+            width: 32px;
+            height: 32px;
+            color: var(--accent);
+        }
+
+        .logo h1 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        /* Language Toggle */
+        .lang-toggle {
+            display: flex;
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 3px;
+            border: 1px solid var(--border-color);
+        }
+
+        .lang-btn {
+            padding: 6px 16px;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 16px;
+            transition: var(--transition);
+        }
+
+        .lang-btn.active {
+            background: var(--accent);
+            color: white;
+        }
+
+        .lang-btn:hover:not(.active) {
+            color: var(--text-primary);
+        }
+
+        /* Training Button */
+        .training-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: linear-gradient(135deg, var(--accent) 0%, #8b5cf6 100%);
+            border: none;
+            border-radius: 20px;
+            color: white;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .training-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+
+        .training-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Main Grid */
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem 2rem;
+            overflow: hidden;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 16px;
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        /* Screenshot Card */
+        .card {
+            position: relative;
+            aspect-ratio: 16/10;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-4px) scale(1.02);
+            border-color: var(--accent);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 20px var(--accent-glow);
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            transition: var(--transition);
+        }
+
+        .card:hover img {
+            transform: scale(1.05);
+        }
+
+        .card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 12px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+        }
+
+        .card-title {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-number {
+            font-size: 0.625rem;
+            font-weight: 600;
+            color: var(--accent);
+            background: rgba(88, 166, 255, 0.15);
+            padding: 2px 6px;
+            border-radius: 4px;
+            flex-shrink: 0;
+            margin-left: 8px;
+        }
+
+        /* Footer */
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+            height: 40px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            flex-shrink: 0;
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Screenshot Modal */
+        .screenshot-modal {
+            position: relative;
+            max-width: 90vw;
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transform: scale(0.95);
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active .screenshot-modal {
+            transform: scale(1);
+        }
+
+        .modal-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .modal-title .card-number {
+            font-size: 0.875rem;
+        }
+
+        .modal-image-container {
+            position: relative;
+            max-width: 100%;
+            max-height: calc(85vh - 80px);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-image-container img {
+            max-width: 100%;
+            max-height: calc(85vh - 80px);
+            object-fit: contain;
+            display: block;
+        }
+
+        /* Modal Navigation */
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-nav:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .modal-nav.prev {
+            left: -70px;
+        }
+
+        .modal-nav.next {
+            right: -70px;
+        }
+
+        .modal-nav svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Close Button */
+        .modal-close {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            z-index: 1001;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .modal-close svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Articulate Modal */
+        .articulate-modal {
+            width: 95vw;
+            height: 90vh;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            transform: scale(0.95);
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active .articulate-modal {
+            transform: scale(1);
+        }
+
+        .articulate-modal iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Keyboard hint */
+        .keyboard-hint {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .key {
+            padding: 4px 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .grid-container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 0 1rem;
+            }
+
+            .logo h1 {
+                font-size: 1rem;
+            }
+
+            .training-btn span {
+                display: none;
+            }
+
+            main {
+                padding: 1rem;
+                overflow-y: auto;
+            }
+
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .modal-nav.prev {
+                left: 10px;
+            }
+
+            .modal-nav.next {
+                right: 10px;
+            }
+        }
+
+        /* Loading state */
+        .card.loading {
+            background: linear-gradient(90deg, var(--bg-card) 0%, var(--bg-secondary) 50%, var(--bg-card) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <path d="M3 9h18M9 21V9"/>
+            </svg>
+            <h1>MPP Portal Overview</h1>
+        </div>
+        <div class="header-actions">
+            <div class="lang-toggle">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="es">ES</button>
+            </div>
+            <button class="training-btn" id="openTraining">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="5 3 19 12 5 21 5 3"/>
+                </svg>
+                <span>Training Course</span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <div class="grid-container" id="screenshotGrid"></div>
+    </main>
+
+    <footer>
+        <span>2025 Eccalon</span>
+        <span>MPP Portal Prototype</span>
+    </footer>
+
+    <!-- Screenshot Modal -->
+    <div class="modal-overlay" id="screenshotModal">
+        <button class="modal-close" id="closeScreenshot">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 6L6 18M6 6l12 12"/>
+            </svg>
+        </button>
+        <div class="screenshot-modal">
+            <div class="modal-title">
+                <span id="modalTitle">Homepage</span>
+                <span class="card-number" id="modalNumber">1</span>
+            </div>
+            <div class="modal-image-container">
+                <button class="modal-nav prev" id="prevScreenshot">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 18l-6-6 6-6"/>
+                    </svg>
+                </button>
+                <img id="modalImage" src="" alt="">
+                <button class="modal-nav next" id="nextScreenshot">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="keyboard-hint">
+            <span><span class="key">ESC</span> Close</span>
+            <span><span class="key">&larr;</span><span class="key">&rarr;</span> Navigate</span>
+        </div>
+    </div>
+
+    <!-- Articulate Modal -->
+    <div class="modal-overlay" id="articulateModal">
+        <button class="modal-close" id="closeArticulate">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 6L6 18M6 6l12 12"/>
+            </svg>
+        </button>
+        <div class="articulate-modal">
+            <iframe id="articulateFrame" src="" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script>
+        // Screenshot data
+        const screenshots = [
+            { id: 1, file: '01-homepage', title: 'Homepage' },
+            { id: 2, file: '02-login', title: 'Login' },
+            { id: 3, file: '03-login-gov', title: 'Login.gov' },
+            { id: 4, file: '04-dashboard', title: 'Dashboard' },
+            { id: 5, file: '05-applications', title: 'Applications' },
+            { id: 6, file: '06-applications-eccalon', title: 'Applications - Eccalon' },
+            { id: 7, file: '07-about-mpp', title: 'About MPP' },
+            { id: 8, file: '08-mentors', title: 'Mentors' },
+            { id: 9, file: '09-proteges', title: 'Proteges' },
+            { id: 10, file: '10-agreements-reports', title: 'Agreements & Reports' },
+            { id: 11, file: '11-resources', title: 'Resources' },
+            { id: 12, file: '12-approved-mentors', title: 'Approved Mentors' },
+            { id: 13, file: '13-interested-proteges', title: 'Interested Proteges' },
+            { id: 14, file: '14-authorized-subcontractors', title: 'Authorized Subcontractors' },
+            { id: 15, file: '15-team-information', title: 'Team Information' },
+            { id: 16, file: '16-edit-company-profile', title: 'Edit Company Profile' },
+            { id: 17, file: '17-feedback', title: 'Feedback' },
+            { id: 18, file: '18-faq', title: 'FAQ' }
+        ];
+
+        // State
+        let currentLang = localStorage.getItem('mpp-lang') || 'en';
+        let currentIndex = 0;
+
+        // Elements
+        const grid = document.getElementById('screenshotGrid');
+        const screenshotModal = document.getElementById('screenshotModal');
+        const articulateModal = document.getElementById('articulateModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalNumber = document.getElementById('modalNumber');
+        const articulateFrame = document.getElementById('articulateFrame');
+
+        // Initialize language toggle
+        function initLangToggle() {
+            const buttons = document.querySelectorAll('.lang-btn');
+            buttons.forEach(btn => {
+                if (btn.dataset.lang === currentLang) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+                btn.addEventListener('click', () => {
+                    currentLang = btn.dataset.lang;
+                    localStorage.setItem('mpp-lang', currentLang);
+                    buttons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    renderGrid();
+                    if (screenshotModal.classList.contains('active')) {
+                        updateModal();
+                    }
+                });
+            });
+        }
+
+        // Get image path
+        function getImagePath(file) {
+            return `images/${currentLang}/${file}.png`;
+        }
+
+        // Render grid
+        function renderGrid() {
+            grid.innerHTML = screenshots.map((s, index) => `
+                <div class="card" data-index="${index}">
+                    <img src="${getImagePath(s.file)}" alt="${s.title}" loading="lazy">
+                    <div class="card-overlay">
+                        <span class="card-title">${s.title}</span>
+                        <span class="card-number">${s.id}</span>
+                    </div>
+                </div>
+            `).join('');
+
+            // Add click handlers
+            document.querySelectorAll('.card').forEach(card => {
+                card.addEventListener('click', () => {
+                    currentIndex = parseInt(card.dataset.index);
+                    openScreenshotModal();
+                });
+            });
+        }
+
+        // Update modal content
+        function updateModal() {
+            const s = screenshots[currentIndex];
+            modalImage.src = getImagePath(s.file);
+            modalTitle.textContent = s.title;
+            modalNumber.textContent = s.id;
+        }
+
+        // Open screenshot modal
+        function openScreenshotModal() {
+            updateModal();
+            screenshotModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close screenshot modal
+        function closeScreenshotModal() {
+            screenshotModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Navigate screenshots
+        function navigate(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = screenshots.length - 1;
+            if (currentIndex >= screenshots.length) currentIndex = 0;
+            updateModal();
+        }
+
+        // Open Articulate modal
+        function openArticulateModal() {
+            articulateFrame.src = 'https://share.articulate.com/A0kOkSnOtde0IaEsWUoZh';
+            articulateModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close Articulate modal
+        function closeArticulateModal() {
+            articulateModal.classList.remove('active');
+            articulateFrame.src = '';
+            document.body.style.overflow = '';
+        }
+
+        // Event listeners
+        document.getElementById('closeScreenshot').addEventListener('click', closeScreenshotModal);
+        document.getElementById('closeArticulate').addEventListener('click', closeArticulateModal);
+        document.getElementById('prevScreenshot').addEventListener('click', () => navigate(-1));
+        document.getElementById('nextScreenshot').addEventListener('click', () => navigate(1));
+        document.getElementById('openTraining').addEventListener('click', openArticulateModal);
+
+        // Modal backdrop clicks
+        screenshotModal.addEventListener('click', (e) => {
+            if (e.target === screenshotModal) closeScreenshotModal();
+        });
+        articulateModal.addEventListener('click', (e) => {
+            if (e.target === articulateModal) closeArticulateModal();
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (screenshotModal.classList.contains('active')) {
+                if (e.key === 'Escape') closeScreenshotModal();
+                if (e.key === 'ArrowLeft') navigate(-1);
+                if (e.key === 'ArrowRight') navigate(1);
+            }
+            if (articulateModal.classList.contains('active')) {
+                if (e.key === 'Escape') closeArticulateModal();
+            }
+        });
+
+        // Initialize
+        initLangToggle();
+        renderGrid();
+    </script>
+</body>
+</html>
