@@ -134,60 +134,53 @@
             height: 16px;
         }
 
-        /* Main - Scrollable Sections */
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            padding: 1rem 2rem;
+            background: rgba(13, 17, 23, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            flex-shrink: 0;
+        }
+
+        .tab-btn {
+            padding: 10px 24px;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .tab-btn:hover {
+            color: var(--text-primary);
+            border-color: var(--text-secondary);
+        }
+
+        .tab-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+
+        /* Main */
         main {
             flex: 1;
             display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
             overflow: hidden;
         }
 
-        .sections-container {
-            flex: 1;
-            overflow-y: auto;
-            scroll-behavior: smooth;
-            padding: 2rem;
-        }
-
-        .screenshot-section {
-            min-height: calc(100vh - 160px);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 2rem 0;
+        .grid-wrapper {
             max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .screenshot-section:not(:last-child) {
-            border-bottom: 1px solid var(--border-color);
-            margin-bottom: 3rem;
-            padding-bottom: 3rem;
-        }
-
-        /* Section Title */
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 2rem;
-            padding-left: 8px;
-        }
-
-        .section-number {
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: var(--accent);
-            background: rgba(88, 166, 255, 0.15);
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
-        }
-
-        .section-name {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            letter-spacing: -0.02em;
+            width: 100%;
         }
 
         /* Grid - 3 columns for 50% larger cards */
@@ -583,20 +576,12 @@
                 grid-template-columns: repeat(3, 1fr);
                 gap: 20px;
             }
-
-            .screenshot-section {
-                min-height: auto;
-            }
         }
 
         @media (max-width: 992px) {
             .grid-container {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 16px;
-            }
-
-            .section-name {
-                font-size: 1.25rem;
             }
         }
 
@@ -613,28 +598,18 @@
                 display: none;
             }
 
-            .sections-container {
+            .tab-nav {
+                padding: 0.75rem 1rem;
+                gap: 4px;
+            }
+
+            .tab-btn {
+                padding: 8px 12px;
+                font-size: 0.75rem;
+            }
+
+            main {
                 padding: 1rem;
-            }
-
-            .screenshot-section {
-                min-height: auto;
-                padding: 1.5rem 0;
-            }
-
-            .screenshot-section:not(:last-child) {
-                margin-bottom: 2rem;
-                padding-bottom: 2rem;
-            }
-
-            .section-title {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 8px;
-            }
-
-            .section-name {
-                font-size: 1.125rem;
             }
 
             .grid-container {
@@ -665,6 +640,10 @@
         }
 
         @media (max-width: 480px) {
+            .tab-nav {
+                flex-wrap: wrap;
+            }
+
             .grid-container {
                 grid-template-columns: 1fr;
                 max-width: 400px;
@@ -708,8 +687,12 @@
         </div>
     </header>
 
+    <nav class="tab-nav" id="tabNav"></nav>
+
     <main>
-        <div class="sections-container" id="sectionsContainer"></div>
+        <div class="grid-wrapper">
+            <div class="grid-container" id="screenshotGrid"></div>
+        </div>
     </main>
 
     <footer>
@@ -1006,9 +989,11 @@
         // State
         let currentLang = localStorage.getItem('mpp-lang') || 'en';
         let currentIndex = 0;
+        let currentSection = 0;
 
         // Elements
-        const sectionsContainer = document.getElementById('sectionsContainer');
+        const tabNav = document.getElementById('tabNav');
+        const grid = document.getElementById('screenshotGrid');
         const summaryModal = document.getElementById('summaryModal');
         const viewerModal = document.getElementById('viewerModal');
 
@@ -1042,7 +1027,8 @@
                     localStorage.setItem('mpp-lang', currentLang);
                     buttons.forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
-                    renderSections();
+                    renderTabs();
+                    renderGrid();
                     updateUIText();
                     if (summaryModal.classList.contains('active')) {
                         updateSummaryModal();
@@ -1073,30 +1059,40 @@
             return `${index + 1} ${uiText[currentLang].of} ${screenshots.length}`;
         }
 
-        // Render sections with grids
-        function renderSections() {
-            sectionsContainer.innerHTML = sections.map((section, sIndex) => `
-                <section class="screenshot-section" data-section="${sIndex}">
-                    <h2 class="section-title">
-                        <span class="section-number">${String(sIndex + 1).padStart(2, '0')}</span>
-                        <span class="section-name">${section.title[currentLang]}</span>
-                    </h2>
-                    <div class="grid-container">
-                        ${section.screenshots.map(i => {
-                            const s = screenshots[i];
-                            return `
-                                <div class="card" data-index="${i}">
-                                    <img src="${getImagePath(s.file)}" alt="${s.title[currentLang]}" loading="lazy">
-                                    <div class="card-overlay">
-                                        <span class="card-title">${s.title[currentLang]}</span>
-                                        <span class="card-number">${s.id}</span>
-                                    </div>
-                                </div>
-                            `;
-                        }).join('')}
-                    </div>
-                </section>
+        // Render tab navigation
+        function renderTabs() {
+            tabNav.innerHTML = sections.map((section, index) => `
+                <button class="tab-btn ${index === currentSection ? 'active' : ''}"
+                        data-section="${index}">
+                    ${section.title[currentLang]}
+                </button>
             `).join('');
+
+            // Add click handlers
+            tabNav.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    currentSection = parseInt(btn.dataset.section);
+                    renderTabs();
+                    renderGrid();
+                });
+            });
+        }
+
+        // Render grid for current section only
+        function renderGrid() {
+            const section = sections[currentSection];
+            grid.innerHTML = section.screenshots.map(i => {
+                const s = screenshots[i];
+                return `
+                    <div class="card" data-index="${i}">
+                        <img src="${getImagePath(s.file)}" alt="${s.title[currentLang]}" loading="lazy">
+                        <div class="card-overlay">
+                            <span class="card-title">${s.title[currentLang]}</span>
+                            <span class="card-number">${s.id}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
 
             // Add click handlers
             document.querySelectorAll('.card').forEach(card => {
@@ -1211,7 +1207,8 @@
 
         // Initialize
         initLangToggle();
-        renderSections();
+        renderTabs();
+        renderGrid();
         updateUIText();
     </script>
 </body>
