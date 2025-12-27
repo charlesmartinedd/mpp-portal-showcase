@@ -618,21 +618,7 @@
     </div>
 
 
-    <!-- Walking Avatar -->
-    <div class="walking-avatar" id="walkingAvatar">
-        <div class="avatar-figure">
-            <div class="avatar-head">
-                <div class="avatar-eyes"><div class="avatar-eye"></div><div class="avatar-eye"></div></div>
-                <div class="avatar-smile"></div>
-            </div>
-            <div class="avatar-body"></div>
-            <div class="avatar-arm left"><div class="avatar-hand"></div></div>
-            <div class="avatar-arm right"><div class="avatar-hand"></div><span class="pointing-finger">👆</span></div>
-            <div class="avatar-leg left"><div class="avatar-foot"></div></div>
-            <div class="avatar-leg right"><div class="avatar-foot"></div></div>
-        </div>
-        <div class="avatar-speech" id="avatarSpeech">Welcome!</div>
-    </div>
+    <!-- Walking Avatar (disabled) -->
 
     <!-- Tour Complete -->
     <div class="tour-complete" id="tourComplete">
@@ -730,6 +716,7 @@
 
         let currentStep = 0;
         let tourStarted = false;
+        let isZoomedIn = false; // Track zoom state
 
         // Initialize
         function init() {
@@ -792,6 +779,9 @@
             activeHotspot.classList.add('active');
             activeHotspot.classList.remove('completed');
 
+            // Reset zoom state for new step
+            isZoomedIn = false;
+
             // Temporarily unlock scroll to auto-scroll to hotspot
             viewport.classList.remove('scroll-locked');
 
@@ -803,21 +793,13 @@
                 viewport.classList.add('scroll-locked');
             }, 600);
 
-            // Zoom to hotspot (Supademo-style)
-            setTimeout(() => {
-                zoomToHotspot(step);
-            }, 200);
-
-            // Position and show callout (after zoom completes)
+            // Start with full view (no zoom) - show callout after scroll
             setTimeout(() => {
                 positionCallout(step, activeHotspot);
-            }, 700);
+            }, 400);
 
             // Show video guide
             showVideoGuide(step);
-
-            // Show walking avatar
-            showWalkingAvatar(step);
         }
 
         function showVideoGuide(step) {
@@ -859,22 +841,6 @@
             video.pause();
             videoGuide.classList.remove('visible');
         }
-
-        function showWalkingAvatar(step) {
-            const avatar = document.getElementById('walkingAvatar');
-            const speech = document.getElementById('avatarSpeech');
-            speech.textContent = step.avatarSpeech || step.title;
-            avatar.classList.remove('walk-in', 'pointing', 'walk-out');
-            setTimeout(() => avatar.classList.add('walk-in'), 100);
-            setTimeout(() => avatar.classList.add('pointing'), 1600);
-        }
-
-        function hideWalkingAvatar() {
-            const avatar = document.getElementById('walkingAvatar');
-            avatar.classList.remove('pointing');
-            avatar.classList.add('walk-out');
-        }
-
 
         function scrollToHotspot(hotspot) {
             const viewport = document.getElementById('viewport');
@@ -966,25 +932,40 @@
             if (stepIndex !== currentStep) return;
 
             const hotspot = document.getElementById(`hotspot-${stepIndex}`);
+            const step = tourSteps[stepIndex];
 
             // Visual feedback
             hotspot.classList.add('clicked');
             setTimeout(() => hotspot.classList.remove('clicked'), 400);
 
-            // Hide callout
-            document.getElementById('callout').classList.remove('visible');
+            if (!isZoomedIn) {
+                // First click: Zoom IN
+                isZoomedIn = true;
+                zoomToHotspot(step);
 
-            // Zoom out first, then move to next step
-            zoomOut();
+                // Reposition callout after zoom
+                setTimeout(() => {
+                    positionCallout(step, hotspot);
+                }, 600);
+            } else {
+                // Second click: Zoom OUT and advance
+                isZoomedIn = false;
 
-            // Move to next step or complete (after zoom out animation)
-            setTimeout(() => {
-                if (currentStep < tourSteps.length - 1) {
-                    showStep(currentStep + 1);
-                } else {
-                    completeTour();
-                }
-            }, 700);
+                // Hide callout
+                document.getElementById('callout').classList.remove('visible');
+
+                // Zoom out
+                zoomOut();
+
+                // Move to next step or complete (after zoom out animation)
+                setTimeout(() => {
+                    if (currentStep < tourSteps.length - 1) {
+                        showStep(currentStep + 1);
+                    } else {
+                        completeTour();
+                    }
+                }, 700);
+            }
         }
 
         function updateProgress() {
