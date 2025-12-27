@@ -433,7 +433,92 @@
             transition: all 0.2s ease;
         }
 
-        
+        /* Video Overlay - Centered avatar video (supports transparent WebM) */
+        .video-overlay {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            width: 400px;
+            background: transparent;
+            border: none;
+            border-radius: 16px;
+            overflow: visible;
+            z-index: 180;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .video-overlay.visible {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+            pointer-events: auto;
+        }
+
+        .video-overlay video {
+            width: 100%;
+            display: block;
+            background: transparent;
+        }
+
+        /* Continue Button - Glowing */
+        .continue-btn-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 185;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.4s ease;
+        }
+
+        .continue-btn-container.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .continue-btn {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: #fff;
+            border: none;
+            padding: 18px 48px;
+            border-radius: 50px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.5), 0 0 40px rgba(34, 197, 94, 0.3), 0 0 60px rgba(34, 197, 94, 0.2);
+            animation: continueGlow 1.5s ease-in-out infinite, continuePulse 2s ease-in-out infinite;
+            transition: transform 0.2s ease;
+        }
+
+        .continue-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(34, 197, 94, 0.7), 0 0 60px rgba(34, 197, 94, 0.5), 0 0 90px rgba(34, 197, 94, 0.3);
+        }
+
+        @keyframes continueGlow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(34, 197, 94, 0.5), 0 0 40px rgba(34, 197, 94, 0.3), 0 0 60px rgba(34, 197, 94, 0.2);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(34, 197, 94, 0.8), 0 0 60px rgba(34, 197, 94, 0.5), 0 0 100px rgba(34, 197, 94, 0.3);
+            }
+        }
+
+        @keyframes continuePulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.03);
+            }
+        }
+
+
         /* Walking Avatar */
         .walking-avatar { position: fixed; bottom: 80px; left: -200px; z-index: 160; transition: left 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); pointer-events: none; }
         .walking-avatar.walk-in { left: 100px; }
@@ -592,33 +677,20 @@
         </div>
     </div>
 
-    <!-- Video Guide (Talking Head) -->
-    <div class="video-guide" id="videoGuide">
-        <div class="video-guide-header">
-            <div class="guide-avatar">🎓</div>
-            <div class="guide-info">
-                <h4>Your Guide</h4>
-                <span id="guideStatus">Step 1 of 5</span>
-            </div>
-        </div>
-        <div class="video-container">
-            <video id="guideVideo" playsinline>
-                <source src="" type="video/mp4">
-            </video>
-            <div class="video-placeholder" id="videoPlaceholder">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-                </svg>
-                <span>Add video: videos/step-1.mp4</span>
-            </div>
-        </div>
-        <div class="video-guide-footer" id="guideFooter">
-            Welcome to the guided tour! Click the highlighted areas to proceed.
-        </div>
+    <!-- Walking Avatar (disabled) -->
+
+    <!-- Video Overlay (Avatar) - supports transparent WebM -->
+    <div class="video-overlay" id="videoOverlay">
+        <video id="overlayVideo" playsinline>
+            <source src="" type="video/webm">
+            <source src="" type="video/mp4">
+        </video>
     </div>
 
-
-    <!-- Walking Avatar (disabled) -->
+    <!-- Continue Button -->
+    <div class="continue-btn-container" id="continueContainer">
+        <button class="continue-btn" onclick="handleContinueClick()">Continue</button>
+    </div>
 
     <!-- Tour Complete -->
     <div class="tour-complete" id="tourComplete">
@@ -639,10 +711,10 @@
                 title: "Welcome to the MPP Portal",
                 description: "This is the official Mentor-Protege Program Portal homepage. The DoD seal and program branding establish this as an official government resource.",
                 // Hotspot position (percentages of image) - tight around logo
-                top: 2.5,
-                left: 2,
-                width: 7,
-                height: 12,
+                top: 2.1,
+                left: 9.1,
+                width: 15.3,
+                height: 4.8,
                 // Callout positioning
                 calloutPosition: "right",
                 calloutOffset: { x: 20, y: 0 },
@@ -657,10 +729,10 @@
                 element: "Navigation Menu",
                 title: "Main Navigation",
                 description: "Access Resources, Login to your account, or Register as a new user. The MPP Summit 2024 link provides conference information.",
-                top: 2,
-                left: 55,
-                width: 42,
-                height: 5,
+                top: 0.3,
+                left: 72.0,
+                width: 27.6,
+                height: 1.6,
                 calloutPosition: "bottom",
                 calloutOffset: { x: 0, y: 20 },
                 video: "videos/step-2-navigation.mp4",
@@ -798,48 +870,6 @@
                 positionCallout(step, activeHotspot);
             }, 400);
 
-            // Show video guide
-            showVideoGuide(step);
-        }
-
-        function showVideoGuide(step) {
-            const videoGuide = document.getElementById('videoGuide');
-            const video = document.getElementById('guideVideo');
-            const placeholder = document.getElementById('videoPlaceholder');
-            const footer = document.getElementById('guideFooter');
-            const status = document.getElementById('guideStatus');
-
-            // Update status
-            status.textContent = `Step ${step.id + 1} of ${tourSteps.length}`;
-
-            // Update caption
-            footer.textContent = step.videoCaption || step.description;
-
-            // Try to load video
-            if (step.video) {
-                video.src = step.video;
-                video.load();
-                video.play().then(() => {
-                    placeholder.style.display = 'none';
-                }).catch(() => {
-                    // Video not found - show placeholder
-                    placeholder.style.display = 'flex';
-                    placeholder.querySelector('span').textContent = `Add video: ${step.video}`;
-                });
-            } else {
-                placeholder.style.display = 'flex';
-                placeholder.querySelector('span').textContent = 'No video configured';
-            }
-
-            // Show the guide
-            videoGuide.classList.add('visible');
-        }
-
-        function hideVideoGuide() {
-            const videoGuide = document.getElementById('videoGuide');
-            const video = document.getElementById('guideVideo');
-            video.pause();
-            videoGuide.classList.remove('visible');
         }
 
         function scrollToHotspot(hotspot) {
@@ -939,33 +969,90 @@
             setTimeout(() => hotspot.classList.remove('clicked'), 400);
 
             if (!isZoomedIn) {
-                // First click: Zoom IN
+                // First click: Zoom IN and show video
                 isZoomedIn = true;
                 zoomToHotspot(step);
 
-                // Reposition callout after zoom
+                // Show video overlay after zoom
                 setTimeout(() => {
-                    positionCallout(step, hotspot);
+                    showVideoOverlay(step);
                 }, 600);
-            } else {
-                // Second click: Zoom OUT and advance
-                isZoomedIn = false;
-
-                // Hide callout
-                document.getElementById('callout').classList.remove('visible');
-
-                // Zoom out
-                zoomOut();
-
-                // Move to next step or complete (after zoom out animation)
-                setTimeout(() => {
-                    if (currentStep < tourSteps.length - 1) {
-                        showStep(currentStep + 1);
-                    } else {
-                        completeTour();
-                    }
-                }, 700);
             }
+            // Note: Continue button handles advancing (see handleContinueClick)
+        }
+
+        // Show video overlay
+        function showVideoOverlay(step) {
+            const overlay = document.getElementById('videoOverlay');
+            const video = document.getElementById('overlayVideo');
+
+            // Set video source (supports both WebM and MP4)
+            if (step.video) {
+                const sources = video.querySelectorAll('source');
+                // Try WebM first (for transparency), fallback to MP4
+                const webmPath = step.video.replace('.mp4', '.webm');
+                sources[0].src = webmPath;  // WebM
+                sources[1].src = step.video; // MP4 fallback
+                video.load();
+
+                // Show overlay
+                overlay.classList.add('visible');
+
+                // Play video
+                video.play();
+
+                // When video ends, hide overlay and show continue button
+                video.onended = function() {
+                    hideVideoOverlay();
+                    showContinueButton();
+                };
+
+                // Also allow clicking video to skip
+                video.onclick = function() {
+                    video.pause();
+                    hideVideoOverlay();
+                    showContinueButton();
+                };
+            } else {
+                // No video - show continue button immediately
+                showContinueButton();
+            }
+        }
+
+        // Hide video overlay
+        function hideVideoOverlay() {
+            document.getElementById('videoOverlay').classList.remove('visible');
+        }
+
+        // Show glowing continue button
+        function showContinueButton() {
+            document.getElementById('continueContainer').classList.add('visible');
+        }
+
+        // Hide continue button
+        function hideContinueButton() {
+            document.getElementById('continueContainer').classList.remove('visible');
+        }
+
+        // Handle continue button click
+        function handleContinueClick() {
+            hideContinueButton();
+            isZoomedIn = false;
+
+            // Hide callout
+            document.getElementById('callout').classList.remove('visible');
+
+            // Zoom out
+            zoomOut();
+
+            // Move to next step or complete (after zoom out animation)
+            setTimeout(() => {
+                if (currentStep < tourSteps.length - 1) {
+                    showStep(currentStep + 1);
+                } else {
+                    completeTour();
+                }
+            }, 700);
         }
 
         function updateProgress() {

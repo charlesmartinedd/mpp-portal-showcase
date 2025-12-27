@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotspot Editor - Draw & Position</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            min-height: 100vh;
+        }
+
+        /* Header with controls */
+        .editor-header {
+            background: #1e293b;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #334155;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .editor-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #fbbf24;
+        }
+
+        .editor-subtitle {
+            font-size: 0.875rem;
+            color: #94a3b8;
+            margin-top: 4px;
+        }
+
+        /* Coordinates display */
+        .coordinates-panel {
+            background: #0f172a;
+            border: 2px solid #fbbf24;
+            border-radius: 8px;
+            padding: 16px 24px;
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .coord-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .coord-label {
+            font-size: 0.75rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .coord-value {
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 1.25rem;
+            color: #22c55e;
+            font-weight: 600;
+        }
+
+        .copy-btn {
+            background: #fbbf24;
+            color: #0f172a;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-left: auto;
+        }
+
+        .copy-btn:hover {
+            background: #f59e0b;
+            transform: translateY(-1px);
+        }
+
+        .copy-btn.copied {
+            background: #22c55e;
+        }
+
+        /* Screenshot canvas area */
+        .canvas-container {
+            padding: 24px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .screenshot-wrapper {
+            position: relative;
+            display: inline-block;
+            border: 2px solid #334155;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: crosshair;
+        }
+
+        .screenshot-wrapper img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* The drawn hotspot rectangle */
+        .hotspot-rect {
+            position: absolute;
+            border: 3px solid #fbbf24;
+            background: rgba(251, 191, 36, 0.15);
+            border-radius: 6px;
+            pointer-events: none;
+            display: none;
+            box-shadow: 0 0 0 4px rgba(251, 191, 36, 0.3), 0 0 20px rgba(251, 191, 36, 0.4);
+        }
+
+        .hotspot-rect.visible {
+            display: block;
+        }
+
+        /* Resize handles */
+        .resize-handle {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #fbbf24;
+            border: 2px solid #0f172a;
+            border-radius: 2px;
+            pointer-events: auto;
+            cursor: nwse-resize;
+        }
+
+        .resize-handle.tl { top: -6px; left: -6px; cursor: nwse-resize; }
+        .resize-handle.tr { top: -6px; right: -6px; cursor: nesw-resize; }
+        .resize-handle.bl { bottom: -6px; left: -6px; cursor: nesw-resize; }
+        .resize-handle.br { bottom: -6px; right: -6px; cursor: nwse-resize; }
+
+        /* Move handle (center) */
+        .move-handle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 24px;
+            height: 24px;
+            background: #fbbf24;
+            border: 2px solid #0f172a;
+            border-radius: 50%;
+            pointer-events: auto;
+            cursor: move;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        /* Instructions */
+        .instructions {
+            background: #1e293b;
+            padding: 16px 24px;
+            border-top: 1px solid #334155;
+            display: flex;
+            gap: 32px;
+            justify-content: center;
+            font-size: 0.875rem;
+        }
+
+        .instruction-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .instruction-key {
+            background: #334155;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #fbbf24;
+        }
+
+        /* Code output panel */
+        .code-panel {
+            background: #1e293b;
+            margin: 0 24px 24px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .code-header {
+            background: #334155;
+            padding: 12px 16px;
+            font-size: 0.875rem;
+            color: #94a3b8;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .code-content {
+            padding: 16px;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.875rem;
+            color: #22c55e;
+            white-space: pre;
+            overflow-x: auto;
+        }
+
+        /* Image selector */
+        .image-selector {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .image-selector select {
+            background: #0f172a;
+            color: #e2e8f0;
+            border: 1px solid #334155;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            cursor: pointer;
+        }
+
+        .image-selector select:focus {
+            outline: none;
+            border-color: #fbbf24;
+        }
+    </style>
+</head>
+<body>
+    <div class="editor-header">
+        <div>
+            <div class="editor-title">Hotspot Editor</div>
+            <div class="editor-subtitle">Draw a rectangle around the element you want to highlight</div>
+        </div>
+
+        <div class="coordinates-panel">
+            <div class="coord-group">
+                <span class="coord-label">Top</span>
+                <span class="coord-value" id="coordTop">0</span>
+            </div>
+            <div class="coord-group">
+                <span class="coord-label">Left</span>
+                <span class="coord-value" id="coordLeft">0</span>
+            </div>
+            <div class="coord-group">
+                <span class="coord-label">Width</span>
+                <span class="coord-value" id="coordWidth">0</span>
+            </div>
+            <div class="coord-group">
+                <span class="coord-label">Height</span>
+                <span class="coord-value" id="coordHeight">0</span>
+            </div>
+            <button class="copy-btn" onclick="updateCurrentStep()" style="background: #22c55e;">Save Step</button>
+            <button class="copy-btn" onclick="downloadStepsJSON()" style="background: #3b82f6;">Download JSON</button>
+            <span id="saveStatus" style="color: #94a3b8; font-size: 0.75rem;"></span>
+        </div>
+    </div>
+
+    <div class="instructions">
+        <div class="instruction-item">
+            <span class="instruction-key">Click + Drag</span>
+            <span>Draw hotspot rectangle</span>
+        </div>
+        <div class="instruction-item">
+            <span class="instruction-key">Drag Corners</span>
+            <span>Resize hotspot</span>
+        </div>
+        <div class="instruction-item">
+            <span class="instruction-key">Drag Center</span>
+            <span>Move hotspot</span>
+        </div>
+        <div class="instruction-item">
+            <span class="instruction-key">Esc</span>
+            <span>Clear hotspot</span>
+        </div>
+    </div>
+
+    <div style="padding: 16px 24px; background: #1e293b; display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap;">
+        <div class="image-selector">
+            <label style="color: #94a3b8;">Screenshot:</label>
+            <select id="imageSelect" onchange="changeImage()">
+                <option value="../images/en/01-homepage.png">01 - Homepage</option>
+                <option value="../images/en/02-login.png">02 - Login</option>
+                <option value="../images/en/03-dashboard.png">03 - Dashboard</option>
+                <option value="../images/en/04-resources.png">04 - Resources</option>
+                <option value="../images/en/05-profile.png">05 - Profile</option>
+            </select>
+        </div>
+
+        <!-- Steps Panel -->
+        <div id="stepsPanel" style="flex: 1; min-width: 400px;">
+            <div style="color: #94a3b8; margin-bottom: 8px; font-size: 0.875rem;">Current Steps (click to load coordinates):</div>
+            <div id="stepsList" style="display: flex; flex-wrap: wrap; gap: 8px;"></div>
+        </div>
+    </div>
+
+    <!-- Zoom & Video Position Controls -->
+    <div style="padding: 12px 24px; background: #0f172a; border-top: 1px solid #334155; display: flex; gap: 24px; align-items: center; flex-wrap: wrap;">
+        <!-- Zoom Control -->
+        <div style="display: flex; gap: 12px; align-items: center;">
+            <span style="color: #94a3b8; font-size: 0.875rem;">Zoom:</span>
+            <input type="range" id="zoomSlider" min="1" max="5" step="0.1" value="2.5"
+                   style="width: 100px; accent-color: #fbbf24;" onchange="updateZoom(this.value)">
+            <span style="color: #22c55e; font-family: monospace; min-width: 40px;" id="zoomValue">2.5x</span>
+        </div>
+
+        <!-- Video Position -->
+        <div style="display: flex; gap: 8px; align-items: center;">
+            <span style="color: #94a3b8; font-size: 0.875rem;">Video:</span>
+            <button onclick="setVideoPosition('top-left')" class="pos-btn" id="pos-top-left">↖</button>
+            <button onclick="setVideoPosition('top-right')" class="pos-btn" id="pos-top-right">↗</button>
+            <button onclick="setVideoPosition('center')" class="pos-btn active" id="pos-center">⊙</button>
+            <button onclick="setVideoPosition('bottom-left')" class="pos-btn" id="pos-bottom-left">↙</button>
+            <button onclick="setVideoPosition('bottom-right')" class="pos-btn" id="pos-bottom-right">↘</button>
+            <button onclick="setVideoPosition('custom')" class="pos-btn" id="pos-custom">✎</button>
+        </div>
+
+        <!-- Video Coordinates -->
+        <div style="display: flex; gap: 8px; align-items: center;">
+            <span style="color: #64748b; font-size: 0.75rem;">X:</span>
+            <span style="color: #22c55e; font-family: monospace;" id="videoX">50</span>
+            <span style="color: #64748b; font-size: 0.75rem;">Y:</span>
+            <span style="color: #22c55e; font-family: monospace;" id="videoY">50</span>
+            <span style="color: #64748b; font-size: 0.75rem;">%</span>
+        </div>
+    </div>
+
+    <style>
+        .pos-btn {
+            background: #334155;
+            border: 1px solid #475569;
+            color: #e2e8f0;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: all 0.2s;
+        }
+        .pos-btn:hover {
+            background: #475569;
+        }
+        .pos-btn.active {
+            background: #fbbf24;
+            color: #0f172a;
+            border-color: #fbbf24;
+        }
+        .video-preview {
+            position: absolute;
+            width: 120px;
+            height: 68px;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            border: 3px solid #22c55e;
+            border-radius: 8px;
+            cursor: move;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 600;
+            box-shadow: 0 4px 20px rgba(34, 197, 94, 0.4);
+            z-index: 20;
+            user-select: none;
+        }
+        .video-preview::before {
+            content: '▶ VIDEO';
+        }
+    </style>
+
+    <div class="canvas-container">
+        <div class="screenshot-wrapper" id="screenshotWrapper">
+            <img src="../images/en/01-homepage.png" alt="Screenshot" id="screenshot">
+            <div class="hotspot-rect" id="hotspotRect">
+                <div class="resize-handle tl" data-handle="tl"></div>
+                <div class="resize-handle tr" data-handle="tr"></div>
+                <div class="resize-handle bl" data-handle="bl"></div>
+                <div class="resize-handle br" data-handle="br"></div>
+                <div class="move-handle" data-handle="move">✥</div>
+            </div>
+            <!-- Video position preview -->
+            <div class="video-preview" id="videoPreview"></div>
+        </div>
+    </div>
+
+    <div class="code-panel">
+        <div class="code-header">
+            <span>Generated Config (paste into tourSteps)</span>
+            <button class="copy-btn" style="padding: 6px 12px; font-size: 0.75rem;" onclick="copyCode()">Copy</button>
+        </div>
+        <div class="code-content" id="codeOutput">// Draw a hotspot to see the config</div>
+    </div>
+
+    <script>
+        const wrapper = document.getElementById('screenshotWrapper');
+        const img = document.getElementById('screenshot');
+        const rect = document.getElementById('hotspotRect');
+
+        let isDrawing = false;
+        let isDragging = false;
+        let isResizing = false;
+        let activeHandle = null;
+        let startX, startY;
+        let rectLeft, rectTop, rectWidth, rectHeight;
+        let dragOffsetX, dragOffsetY;
+
+        // Current hotspot coordinates (in percentages)
+        let hotspot = { top: 0, left: 0, width: 0, height: 0 };
+
+        // Video and zoom settings
+        let currentZoom = 2.5;
+        let videoPosition = { x: 50, y: 50, preset: 'center' };
+        let isDraggingVideo = false;
+        let videoDragOffsetX, videoDragOffsetY;
+        const videoPreview = document.getElementById('videoPreview');
+
+        // Get mouse position relative to image
+        function getMousePos(e) {
+            const bounds = img.getBoundingClientRect();
+            return {
+                x: e.clientX - bounds.left,
+                y: e.clientY - bounds.top
+            };
+        }
+
+        // Convert pixel position to percentage
+        function toPercent(px, total) {
+            return (px / total * 100).toFixed(1);
+        }
+
+        // Update coordinate display
+        function updateDisplay() {
+            document.getElementById('coordTop').textContent = hotspot.top;
+            document.getElementById('coordLeft').textContent = hotspot.left;
+            document.getElementById('coordWidth').textContent = hotspot.width;
+            document.getElementById('coordHeight').textContent = hotspot.height;
+
+            // Update code output with zoom and video position
+            const code = `{
+    top: ${hotspot.top},
+    left: ${hotspot.left},
+    width: ${hotspot.width},
+    height: ${hotspot.height},
+    zoomLevel: ${currentZoom.toFixed(1)},
+    videoPosition: { x: ${videoPosition.x}, y: ${videoPosition.y} }
+}`;
+            document.getElementById('codeOutput').textContent = code;
+        }
+
+        // Update rectangle position from hotspot values
+        function updateRectFromHotspot() {
+            const imgWidth = img.offsetWidth;
+            const imgHeight = img.offsetHeight;
+
+            rect.style.left = (hotspot.left / 100 * imgWidth) + 'px';
+            rect.style.top = (hotspot.top / 100 * imgHeight) + 'px';
+            rect.style.width = (hotspot.width / 100 * imgWidth) + 'px';
+            rect.style.height = (hotspot.height / 100 * imgHeight) + 'px';
+        }
+
+        // Mouse down - start drawing or dragging
+        wrapper.addEventListener('mousedown', (e) => {
+            const pos = getMousePos(e);
+
+            // Check if clicking on a handle
+            if (e.target.classList.contains('resize-handle')) {
+                isResizing = true;
+                activeHandle = e.target.dataset.handle;
+                startX = pos.x;
+                startY = pos.y;
+                rectLeft = parseFloat(rect.style.left) || 0;
+                rectTop = parseFloat(rect.style.top) || 0;
+                rectWidth = rect.offsetWidth;
+                rectHeight = rect.offsetHeight;
+                e.preventDefault();
+                return;
+            }
+
+            // Check if clicking on move handle
+            if (e.target.classList.contains('move-handle')) {
+                isDragging = true;
+                const rectBounds = rect.getBoundingClientRect();
+                const imgBounds = img.getBoundingClientRect();
+                dragOffsetX = e.clientX - rectBounds.left;
+                dragOffsetY = e.clientY - rectBounds.top;
+                e.preventDefault();
+                return;
+            }
+
+            // Start drawing new rectangle
+            isDrawing = true;
+            startX = pos.x;
+            startY = pos.y;
+
+            rect.style.left = startX + 'px';
+            rect.style.top = startY + 'px';
+            rect.style.width = '0px';
+            rect.style.height = '0px';
+            rect.classList.add('visible');
+        });
+
+        // Mouse move - update rectangle
+        document.addEventListener('mousemove', (e) => {
+            if (!isDrawing && !isDragging && !isResizing) return;
+
+            const pos = getMousePos(e);
+            const imgWidth = img.offsetWidth;
+            const imgHeight = img.offsetHeight;
+
+            if (isDrawing) {
+                // Calculate rectangle dimensions
+                const width = pos.x - startX;
+                const height = pos.y - startY;
+
+                // Handle negative dimensions (drawing backwards)
+                if (width < 0) {
+                    rect.style.left = pos.x + 'px';
+                    rect.style.width = Math.abs(width) + 'px';
+                } else {
+                    rect.style.left = startX + 'px';
+                    rect.style.width = width + 'px';
+                }
+
+                if (height < 0) {
+                    rect.style.top = pos.y + 'px';
+                    rect.style.height = Math.abs(height) + 'px';
+                } else {
+                    rect.style.top = startY + 'px';
+                    rect.style.height = height + 'px';
+                }
+            }
+
+            if (isDragging) {
+                const imgBounds = img.getBoundingClientRect();
+                let newLeft = e.clientX - imgBounds.left - dragOffsetX;
+                let newTop = e.clientY - imgBounds.top - dragOffsetY;
+
+                // Constrain to image bounds
+                newLeft = Math.max(0, Math.min(newLeft, imgWidth - rect.offsetWidth));
+                newTop = Math.max(0, Math.min(newTop, imgHeight - rect.offsetHeight));
+
+                rect.style.left = newLeft + 'px';
+                rect.style.top = newTop + 'px';
+            }
+
+            if (isResizing) {
+                const dx = pos.x - startX;
+                const dy = pos.y - startY;
+
+                let newLeft = rectLeft;
+                let newTop = rectTop;
+                let newWidth = rectWidth;
+                let newHeight = rectHeight;
+
+                switch (activeHandle) {
+                    case 'tl':
+                        newLeft = rectLeft + dx;
+                        newTop = rectTop + dy;
+                        newWidth = rectWidth - dx;
+                        newHeight = rectHeight - dy;
+                        break;
+                    case 'tr':
+                        newTop = rectTop + dy;
+                        newWidth = rectWidth + dx;
+                        newHeight = rectHeight - dy;
+                        break;
+                    case 'bl':
+                        newLeft = rectLeft + dx;
+                        newWidth = rectWidth - dx;
+                        newHeight = rectHeight + dy;
+                        break;
+                    case 'br':
+                        newWidth = rectWidth + dx;
+                        newHeight = rectHeight + dy;
+                        break;
+                }
+
+                // Ensure minimum size
+                if (newWidth > 10 && newHeight > 10) {
+                    rect.style.left = newLeft + 'px';
+                    rect.style.top = newTop + 'px';
+                    rect.style.width = newWidth + 'px';
+                    rect.style.height = newHeight + 'px';
+                }
+            }
+
+            // Update hotspot percentages
+            hotspot.left = toPercent(parseFloat(rect.style.left), imgWidth);
+            hotspot.top = toPercent(parseFloat(rect.style.top), imgHeight);
+            hotspot.width = toPercent(rect.offsetWidth, imgWidth);
+            hotspot.height = toPercent(parseFloat(rect.style.height), imgHeight);
+
+            updateDisplay();
+        });
+
+        // Mouse up - finish drawing
+        document.addEventListener('mouseup', () => {
+            isDrawing = false;
+            isDragging = false;
+            isResizing = false;
+            activeHandle = null;
+        });
+
+        // Escape to clear
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                rect.classList.remove('visible');
+                hotspot = { top: 0, left: 0, width: 0, height: 0 };
+                updateDisplay();
+            }
+        });
+
+        // Copy coordinates to clipboard
+        function copyCoordinates() {
+            const text = `top: ${hotspot.top},
+left: ${hotspot.left},
+width: ${hotspot.width},
+height: ${hotspot.height},`;
+            navigator.clipboard.writeText(text);
+
+            const btn = document.querySelector('.copy-btn');
+            btn.textContent = 'Copied!';
+            btn.classList.add('copied');
+            setTimeout(() => {
+                btn.textContent = 'Copy Config';
+                btn.classList.remove('copied');
+            }, 2000);
+        }
+
+        // Copy full code block
+        function copyCode() {
+            const code = document.getElementById('codeOutput').textContent;
+            navigator.clipboard.writeText(code);
+        }
+
+        // Change screenshot image
+        function changeImage() {
+            const select = document.getElementById('imageSelect');
+            img.src = select.value;
+            rect.classList.remove('visible');
+            hotspot = { top: 0, left: 0, width: 0, height: 0 };
+            updateDisplay();
+        }
+
+        // ========== ZOOM CONTROL ==========
+        function updateZoom(value) {
+            currentZoom = parseFloat(value);
+            document.getElementById('zoomValue').textContent = currentZoom.toFixed(1) + 'x';
+            updateDisplay();
+        }
+
+        // ========== VIDEO POSITION CONTROL ==========
+        const positionPresets = {
+            'top-left': { x: 15, y: 20 },
+            'top-right': { x: 85, y: 20 },
+            'center': { x: 50, y: 50 },
+            'bottom-left': { x: 15, y: 80 },
+            'bottom-right': { x: 85, y: 80 }
+        };
+
+        function setVideoPosition(position) {
+            // Update button states
+            document.querySelectorAll('.pos-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('pos-' + position).classList.add('active');
+
+            if (position === 'custom') {
+                // Enable custom dragging mode - don't change position
+                videoPosition.preset = 'custom';
+            } else {
+                // Apply preset position
+                const preset = positionPresets[position];
+                videoPosition = { x: preset.x, y: preset.y, preset: position };
+            }
+
+            // Update display
+            document.getElementById('videoX').textContent = videoPosition.x;
+            document.getElementById('videoY').textContent = videoPosition.y;
+
+            // Update video preview position
+            updateVideoPreviewPosition();
+            updateDisplay();
+        }
+
+        function updateVideoPreviewPosition() {
+            const imgWidth = img.offsetWidth;
+            const imgHeight = img.offsetHeight;
+            const previewWidth = 120;
+            const previewHeight = 68;
+
+            // Convert percentage to pixel position (centered on the point)
+            const left = (videoPosition.x / 100 * imgWidth) - (previewWidth / 2);
+            const top = (videoPosition.y / 100 * imgHeight) - (previewHeight / 2);
+
+            videoPreview.style.left = left + 'px';
+            videoPreview.style.top = top + 'px';
+        }
+
+        // ========== VIDEO PREVIEW DRAGGING ==========
+        videoPreview.addEventListener('mousedown', (e) => {
+            // Only allow dragging in custom mode
+            if (videoPosition.preset !== 'custom') {
+                setVideoPosition('custom');
+            }
+            isDraggingVideo = true;
+            const previewBounds = videoPreview.getBoundingClientRect();
+            videoDragOffsetX = e.clientX - previewBounds.left;
+            videoDragOffsetY = e.clientY - previewBounds.top;
+            e.preventDefault();
+            e.stopPropagation();
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDraggingVideo) return;
+
+            const imgBounds = img.getBoundingClientRect();
+            const previewWidth = 120;
+            const previewHeight = 68;
+
+            // Calculate new position
+            let newLeft = e.clientX - imgBounds.left - videoDragOffsetX;
+            let newTop = e.clientY - imgBounds.top - videoDragOffsetY;
+
+            // Constrain to image bounds
+            newLeft = Math.max(0, Math.min(newLeft, imgBounds.width - previewWidth));
+            newTop = Math.max(0, Math.min(newTop, imgBounds.height - previewHeight));
+
+            // Apply position
+            videoPreview.style.left = newLeft + 'px';
+            videoPreview.style.top = newTop + 'px';
+
+            // Calculate center point as percentage
+            const centerX = newLeft + previewWidth / 2;
+            const centerY = newTop + previewHeight / 2;
+            videoPosition.x = Math.round(centerX / imgBounds.width * 100);
+            videoPosition.y = Math.round(centerY / imgBounds.height * 100);
+
+            // Update display
+            document.getElementById('videoX').textContent = videoPosition.x;
+            document.getElementById('videoY').textContent = videoPosition.y;
+            updateDisplay();
+        });
+
+        document.addEventListener('mouseup', () => {
+            if (isDraggingVideo) {
+                isDraggingVideo = false;
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (rect.classList.contains('visible')) {
+                updateRectFromHotspot();
+            }
+            updateVideoPreviewPosition();
+        });
+
+        // Tour steps - edit these directly or use Download JSON to export
+        let tourSteps = [
+            { id: 0, element: "MPP Logo", top: 2.1, left: 9.1, width: 15.3, height: 4.8, status: "done" },
+            { id: 1, element: "Navigation Menu", top: 0.3, left: 72.0, width: 27.6, height: 1.6, status: "done" },
+            { id: 2, element: "Welcome Message", top: 10, left: 6, width: 42, height: 12, status: "pending" },
+            { id: 3, element: "Login Button", top: 12.8, left: 6, width: 18, height: 2.8, status: "pending" },
+            { id: 4, element: "SAM Profile Link", top: 18.2, left: 6, width: 11, height: 1.8, status: "pending" }
+        ];
+        let activeStepId = null;
+        let hasUnsavedChanges = false;
+
+        // Download steps as JSON file
+        function downloadStepsJSON() {
+            const data = { steps: tourSteps };
+            const blob = new Blob([JSON.stringify(data, null, 4)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'steps.json';
+            a.click();
+            URL.revokeObjectURL(url);
+            hasUnsavedChanges = false;
+            updateSaveStatus('Downloaded!');
+        }
+
+        // Update save status display
+        function updateSaveStatus(message) {
+            const statusEl = document.getElementById('saveStatus');
+            if (statusEl) {
+                statusEl.textContent = message;
+            }
+        }
+
+        // Render steps list
+        function renderStepsList() {
+            const container = document.getElementById('stepsList');
+            if (!container || tourSteps.length === 0) return;
+
+            container.innerHTML = tourSteps.map(step => `
+                <button
+                    onclick="loadStep(${step.id})"
+                    style="
+                        background: ${step.status === 'done' ? '#166534' : '#334155'};
+                        border: 2px solid ${activeStepId === step.id ? '#fbbf24' : 'transparent'};
+                        color: #e2e8f0;
+                        padding: 8px 12px;
+                        border-radius: 6px;
+                        cursor: pointer;
+                        font-size: 0.75rem;
+                        transition: all 0.2s;
+                    "
+                    onmouseover="this.style.background='${step.status === 'done' ? '#15803d' : '#475569'}'"
+                    onmouseout="this.style.background='${step.status === 'done' ? '#166534' : '#334155'}'"
+                >
+                    <strong>${step.id}:</strong> ${step.element}
+                    ${step.status === 'done' ? '✓' : ''}
+                </button>
+            `).join('');
+        }
+
+        // Load a step's coordinates into the editor
+        function loadStep(stepId) {
+            const step = tourSteps.find(s => s.id === stepId);
+            if (!step) return;
+
+            activeStepId = stepId;
+            hotspot = {
+                top: step.top,
+                left: step.left,
+                width: step.width,
+                height: step.height
+            };
+
+            // Load zoom level if available
+            if (step.zoomLevel) {
+                currentZoom = step.zoomLevel;
+                document.getElementById('zoomSlider').value = currentZoom;
+                document.getElementById('zoomValue').textContent = currentZoom.toFixed(1) + 'x';
+            }
+
+            // Load video position if available
+            if (step.videoPosition) {
+                videoPosition = { x: step.videoPosition.x, y: step.videoPosition.y, preset: 'custom' };
+                document.getElementById('videoX').textContent = videoPosition.x;
+                document.getElementById('videoY').textContent = videoPosition.y;
+                document.querySelectorAll('.pos-btn').forEach(btn => btn.classList.remove('active'));
+                document.getElementById('pos-custom').classList.add('active');
+                updateVideoPreviewPosition();
+            }
+
+            // Show the rectangle
+            rect.classList.add('visible');
+            updateRectFromHotspot();
+            updateDisplay();
+            renderStepsList();
+        }
+
+        // Update current step with new coordinates
+        function updateCurrentStep() {
+            if (activeStepId !== null) {
+                const step = tourSteps.find(s => s.id === activeStepId);
+                if (step) {
+                    step.top = parseFloat(hotspot.top);
+                    step.left = parseFloat(hotspot.left);
+                    step.width = parseFloat(hotspot.width);
+                    step.height = parseFloat(hotspot.height);
+                    step.zoomLevel = currentZoom;
+                    step.videoPosition = { x: videoPosition.x, y: videoPosition.y };
+                    step.status = 'done';
+                    hasUnsavedChanges = true;
+                    renderStepsList();
+                    updateSaveStatus('Step saved! (Download JSON to export)');
+                    setTimeout(() => updateSaveStatus(''), 3000);
+                }
+            }
+        }
+
+        // Initialize
+        updateDisplay();
+        renderStepsList();
+
+        // Initialize video preview position after image loads
+        img.addEventListener('load', () => {
+            updateVideoPreviewPosition();
+        });
+        // Also try immediately in case image is cached
+        if (img.complete) {
+            updateVideoPreviewPosition();
+        }
+    </script>
+</body>
+</html>
