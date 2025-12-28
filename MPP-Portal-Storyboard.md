@@ -414,7 +414,165 @@
 
 # PATH B: Dashboard Walkthrough
 
-_Next phase of development - steps for the dashboard interface..._
+---
+
+## Gamification System
+
+**Points**: 1 point per section completed (6 total)
+**Badges**: Themed icons for each section (created with Google Nano Banana)
+**Completion Effect**: Completed sections go grey with badge overlay (content still visible behind)
+**Final Reward**: Congratulations screen + Certificate of Completion
+
+### Badge Themes (TBD - Nano Banana)
+
+| Section | Badge Theme Idea |
+|---------|------------------|
+| Agreements & Reports | Document with seal/ribbon |
+| Applications | Clipboard with checkmark |
+| Resources | Book or toolbox |
+| Team Information | People/handshake |
+| Becoming a Mentor | Guiding hand/lighthouse |
+| Becoming a Protege | Rising star/growth |
+| **Final Badge** | Shield or trophy with "Dashboard Master" |
+
+### Progress Tracker UI
+
+- Visual display showing 0/6 → 6/6 progress
+- Each section lights up or gets badge when complete
+- Persistent on screen during Path B
+
+---
+
+## Step B1: Dashboard Overview
+
+**Screen**: Full dashboard view (from Path A transition)
+**Effect**: Avatar pops in for animated overview
+**Elements**:
+- Left sidebar navigation highlighted first
+- Then main content area
+
+**Video Narration** (Draft - ~30 seconds):
+> "Welcome to your MPP Dashboard! This is your command center for managing your participation in the Mentor-Protege Program. On the left, you'll find quick navigation to your Dashboard, Applications, About MPP, Agreements & Reports, Resources, and Team Information. Below that, your Account section lets you edit your company profile, provide feedback, access help, or log out. In the main area, you'll see a welcome message, plus quick access to Agreements & Reports, Applications, Resources, Team Information, and information about becoming a Mentor or Protege. Let's explore each section — you can choose where to start!"
+
+**After Video**:
+- Progress tracker appears (0/6)
+- Six clickable section cards highlight
+- User chooses which to explore first
+
+---
+
+## Step B2: Section Selection Hub
+
+**Screen**: Dashboard with 6 clickable sections
+**Interaction**: Non-linear - user picks any section
+**Visual**: Uncompleted sections glow/pulse, completed sections greyed with badge
+
+**The 6 Sections**:
+
+| # | Section | Activity Type | Scenario Theme |
+|---|---------|---------------|----------------|
+| 1 | Agreements & Reports | _TBD_ | _TBD_ |
+| 2 | Applications | _TBD_ | _TBD_ |
+| 3 | Resources | _TBD_ | _TBD_ |
+| 4 | Team Information | _TBD_ | _TBD_ |
+| 5 | Becoming a Mentor | _TBD_ | _TBD_ |
+| 6 | Becoming a Protege | _TBD_ | _TBD_ |
+
+---
+
+## Section 1: Agreements & Reports
+
+_Walk through with user - TBD_
+
+**Sub-pages to cover**: _TBD_
+**Hotspots**: _TBD_
+**Scenario**: _TBD_
+**Activity Type**: _TBD_
+**Badge**: Document with seal/ribbon
+
+---
+
+## Section 2: Applications
+
+_Walk through with user - TBD_
+
+**Sub-pages to cover**: _TBD_
+**Hotspots**: _TBD_
+**Scenario**: _TBD_
+**Activity Type**: _TBD_
+**Badge**: Clipboard with checkmark
+
+---
+
+## Section 3: Resources
+
+_Walk through with user - TBD_
+
+**Sub-pages to cover**: _TBD_
+**Hotspots**: _TBD_
+**Scenario**: _TBD_
+**Activity Type**: _TBD_
+**Badge**: Book or toolbox
+
+---
+
+## Section 4: Team Information
+
+_Walk through with user - TBD_
+
+**Sub-pages to cover**: _TBD_
+**Hotspots**: _TBD_
+**Scenario**: _TBD_
+**Activity Type**: _TBD_
+**Badge**: People/handshake
+
+---
+
+## Section 5: Becoming a Mentor
+
+_Walk through with user - TBD_
+
+**Sub-pages to cover**: _TBD_
+**Hotspots**: _TBD_
+**Scenario**: _TBD_
+**Activity Type**: _TBD_
+**Badge**: Guiding hand/lighthouse
+
+---
+
+## Section 6: Becoming a Protege
+
+_Walk through with user - TBD_
+
+**Sub-pages to cover**: _TBD_
+**Hotspots**: _TBD_
+**Scenario**: _TBD_
+**Activity Type**: _TBD_
+**Badge**: Rising star/growth
+
+---
+
+## Step B-Final: Completion & Certificate
+
+**Trigger**: All 6 sections completed (6/6 points)
+**Screen**: Celebration overlay
+
+**Elements**:
+- Confetti or particle animation
+- All 6 badges displayed
+- Final "Dashboard Master" badge awarded
+- Certificate of Completion (downloadable/printable)
+- Avatar congratulations message
+
+**Video Narration** (Draft - ~15 seconds):
+> "Congratulations! You've completed the MPP Dashboard training. You now know how to navigate agreements, applications, resources, team info, and understand the paths for both mentors and proteges. You're ready to make the most of the Mentor-Protege Program!"
+
+**Certificate Content**:
+- User's name (if captured)
+- "Certificate of Completion: MPP Dashboard Training"
+- Date
+- 6 badge icons displayed
+- DoD MPP branding
 
 ---
 
