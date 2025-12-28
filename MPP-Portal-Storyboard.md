@@ -265,22 +265,156 @@
 **Interaction**:
 - User clicks hotspot or Continue
 - Zoom effect on Summit section
-- Advances to end screen (A11)
+- Advances to scroll transition (A11)
 
 ---
 
-## Step A11: End of Path A (Next Steps)
+## Step A11: Scroll Transition to Next Level
 
-_TBD - Could offer:_
-- Return to choice screen
-- Continue to Dashboard walkthrough
-- Exit with summary
+**Effect**: Simulated scroll down to reveal "Next Level" section
+**Elements**:
+- Page smoothly scrolls down
+- CTA and contact form come into view
+- Brief pause before hotspot
+
+**No Narration** - just visual transition (~2 seconds)
+
+---
+
+## Step A12: Ready for the Next Level (Hotspot 8)
+
+**Hotspot Area**: "Ready to take your company to the next level?" + yellow CTA button
+**Location**: Top of section, centered
+**Highlight**: Glowing box around headline and button
+**Elements visible**:
+- Headline text
+- "START YOUR MPP JOURNEY NOW" button (yellow)
+
+**Video Narration** (Draft - ~10 seconds):
+> "Ready to take your company to the next level? Click 'Start Your MPP Journey Now' to begin the application process and join the Mentor-Protege Program."
+
+**Interaction**:
+- User clicks hotspot or Continue
+- Zoom effect on CTA area
+- Advances to next hotspot (A13)
+
+---
+
+## Step A13: Get Connected Form (Hotspot 9)
+
+**Hotspot Area**: "Get Connected" contact form + navigation links
+**Location**: Left side (form) and right side (links)
+**Highlight**: Glowing box around entire section
+**Elements visible**:
+- "Get Connected" heading
+- Form fields: First Name, Last Name, Email, Phone, Organization, Message
+- Submit button (yellow arrow)
+- Right side links: How to Participate, Eligibility, Resources, Mentor List, etc.
+
+**Video Narration** (Draft - ~20 seconds):
+> "Have questions before you apply? Use the 'Get Connected' form to reach out to the MPP team. Include your name, email, phone number, and organization. In the message field, tell us whether you're interested in becoming a mentor or protege, and any specific questions you have about eligibility or the application process. You can also browse the helpful links on the right for more information."
+
+**Interaction**:
+- User clicks hotspot or Continue
+- Zoom effect on form section
+- Advances to assessment (A14)
+
+---
+
+## Step A14: Knowledge Check (Assessment)
+
+**Screen**: Popup overlay with assessment question
+**Background**: Dimmed page behind modal
+**Elements**:
+- Heading: "Quick Knowledge Check"
+- One multiple-choice question
+- Three answer options (radio buttons)
+- "Submit" button
+
+**Assessment Question** (Draft):
+> "What is required for all participants before accessing the MPP Portal dashboard?"
+
+**Answer Choices**:
+- A) A LinkedIn profile
+- B) An updated SAM registration ✓ (Correct)
+- C) A completed application
+
+**No Video** - user reads and selects answer
+
+**Interaction**:
+- User selects answer
+- Clicks Submit
+- Advances to feedback (A15)
+
+---
+
+## Step A15: Assessment Feedback
+
+**Screen**: Same popup with feedback shown
+**Elements**:
+- Shows selected answer
+- Reveals correct answer with brief explanation
+- "Continue" button
+
+**Feedback Text** (if correct):
+> "Correct! An updated SAM registration is required for all mentors and proteges to verify business information and eligibility."
+
+**Feedback Text** (if incorrect):
+> "Not quite. The correct answer is: An updated SAM registration. SAM registration is required for all participants to verify business information and eligibility."
+
+**Interaction**:
+- User clicks Continue
+- Modal closes
+- Advances to scroll back (A16)
+
+---
+
+## Step A16: Scroll Back to Top
+
+**Effect**: Smooth scroll animation back to top of homepage
+**Elements**:
+- Page scrolls up revealing previous sections in reverse
+- Settles at top with Login button visible
+
+**No Narration** - just visual transition (~3 seconds)
+
+---
+
+## Step A17: Login to Dashboard - Final Highlight (Hotspot 10)
+
+**Hotspot Area**: "LOGIN TO MY DASHBOARD" button (same as Hotspot 3)
+**Location**: Left side, below welcome text
+**Highlight**: Glowing/pulsing box around login button (more prominent than before)
+
+**Video Narration** (Draft - ~12 seconds):
+> "Now that you know your way around the portal, it's time to log in. Click 'Login to My Dashboard' to access your personalized dashboard where you can manage applications, agreements, and track your program progress."
+
+**Interaction**:
+- User clicks the Login button hotspot
+- Advances to transition (A18)
+
+---
+
+## Step A18: Transition to Dashboard (End of Path A)
+
+**Screen**: Brief transition screen or avatar popup
+**Elements**:
+- Avatar appears center screen
+- Thank you message
+- Smooth transition begins
+
+**Video Narration** (Draft - ~10 seconds):
+> "Great job! You've completed the portal overview. Now let's take a look at your dashboard and explore the features available to you there."
+
+**Interaction**:
+- Auto-advances after video
+- Transitions to Path B: Dashboard Walkthrough
 
 ---
 
 # PATH B: Dashboard Walkthrough
 
-_Future development - steps for registered users..._
+_Next phase of development - steps for the dashboard interface..._
 
 ---
 
@@ -290,4 +424,4 @@ _Future development - steps for registered users..._
 - Each step should be 15-30 seconds max
 - Keep language accessible to both mentors (large businesses) and proteges (small businesses)
 - Branching allows personalized experience based on user's familiarity
-- Hotspot order: Welcome → Navigation → Login/SAM → Scroll → Community → Mentors → Proteges → Scroll → Summit
+- Path A hotspot order: Welcome → Navigation → Login/SAM → Scroll → Community → Mentors → Proteges → Scroll → Summit → Scroll → Next Level → Get Connected → Assessment → Scroll Up → Login Final → Transition
