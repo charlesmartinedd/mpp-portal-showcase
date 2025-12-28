@@ -232,11 +232,44 @@
 **Interaction**:
 - User clicks hotspot or Continue
 - Zoom effect on Proteges section
-- Advances to end screen (A9)
+- Advances to scroll transition (A9)
 
 ---
 
-## Step A9: End of Path A (Next Steps)
+## Step A9: Scroll Transition to Summit
+
+**Effect**: Simulated scroll down to reveal MPP Summit section
+**Elements**:
+- Page smoothly scrolls down
+- Summit section comes into view
+- Brief pause before hotspot
+
+**No Narration** - just visual transition (~2 seconds)
+
+---
+
+## Step A10: MPP Summit (Hotspot 7)
+
+**Hotspot Area**: Entire MPP Summit section
+**Location**: Full-width section with networking photo background
+**Highlight**: Glowing box around Summit content
+**Elements visible**:
+- Headline: "Network with current and potential Mentors and Protégés at the annual Mentor-Protégé Summit"
+- MPP Summit 2024 logo + "Building Partnerships & Strengthening Resilience"
+- Yellow CTA: "HERE'S WHAT YOU MISSED AT THIS YEAR'S SUMMIT"
+- Background: People networking at the event
+
+**Video Narration** (Draft - ~20 seconds):
+> "Each year, the Mentor-Protege Program hosts the MPP Summit — a premier networking event for mentors and proteges across the defense industry. The Summit features keynote speakers, educational breakout sessions, and one-on-one matchmaking to help you find the right partnership. Click here to see highlights from this year's event and stay tuned for next year's registration."
+
+**Interaction**:
+- User clicks hotspot or Continue
+- Zoom effect on Summit section
+- Advances to end screen (A11)
+
+---
+
+## Step A11: End of Path A (Next Steps)
 
 _TBD - Could offer:_
 - Return to choice screen
@@ -257,4 +290,4 @@ _Future development - steps for registered users..._
 - Each step should be 15-30 seconds max
 - Keep language accessible to both mentors (large businesses) and proteges (small businesses)
 - Branching allows personalized experience based on user's familiarity
-- Hotspot order: Welcome → Navigation → Login/SAM → Scroll → Community → Mentors → Proteges
+- Hotspot order: Welcome → Navigation → Login/SAM → Scroll → Community → Mentors → Proteges → Scroll → Summit
