@@ -163,11 +163,80 @@
 **Interaction**:
 - User clicks hotspot or Continue
 - Zoom effect on login area
-- Advances to next step or end screen
+- Advances to scroll transition (A5)
 
 ---
 
-## Step A5: End of Path A (Next Steps)
+## Step A5: Scroll Transition
+
+**Effect**: Simulated scroll down to reveal Mentor Community section
+**Elements**:
+- Page smoothly scrolls down
+- New content comes into view
+- Brief pause before next hotspot
+
+**No Narration** - just visual transition (~2 seconds)
+
+---
+
+## Step A6: Join Our Mentor Community (Hotspot 4)
+
+**Hotspot Area**: "JOIN OUR MENTOR COMMUNITY" banner + company logos (BP, IBM, etc.)
+**Location**: Top of scrolled section
+**Highlight**: Glowing box around banner and logos
+
+**Video Narration** (Draft - ~12 seconds):
+> "The Mentor-Protege Program brings together top Prime Contractors from across the defense industry. By joining our mentor community, your company gains access to a pool of talented small businesses, meets subcontracting goals, and strengthens the defense industrial base."
+
+**Interaction**:
+- User clicks hotspot or Continue
+- Zoom effect on banner
+- Advances to next hotspot (A7)
+
+---
+
+## Step A7: Mentors Section (Hotspot 5)
+
+**Hotspot Area**: Left column - "Mentors shape careers, fortify the defense industry, and foster connections"
+**Location**: Left side (blue background section)
+**Highlight**: Glowing box around entire Mentors column
+**Elements visible**:
+- Headline text
+- Three benefit bullets (subcontracting pool, cost reimbursement, market opportunities)
+- "LEARN MORE ABOUT MENTORING" button
+
+**Video Narration** (Draft - ~20 seconds):
+> "As a mentor, you have the opportunity to shape careers and strengthen the defense industry. The program offers real benefits: develop a high-quality subcontracting pool, receive cost reimbursement and credit toward small business contracting goals, and pursue new market opportunities as part of a team. Click 'Learn More About Mentoring' to explore how your company can get involved."
+
+**Interaction**:
+- User clicks hotspot or Continue
+- Zoom effect on Mentors section
+- Advances to next hotspot (A8)
+
+---
+
+## Step A8: Proteges Section (Hotspot 6)
+
+**Hotspot Area**: Right column - "Protégés receive guidance from top Prime Contractors"
+**Location**: Right side (dark blue background section)
+**Highlight**: Glowing box around entire Proteges column
+**Elements visible**:
+- Headline text
+- Four assistance icons (Technical, Administrative, Training, Business Development)
+- "+ MUCH MORE"
+- "LEARN MORE ABOUT PROTÉGÉS" button
+
+**Video Narration** (Draft - ~20 seconds):
+> "As a protege, you'll receive hands-on guidance from experienced Prime Contractors. This includes technical and management assistance, administrative support, training and education, and business development resources — plus much more. The program is designed to help small businesses build the capabilities they need to compete for DoD contracts. Click 'Learn More About Protégés' to see if your company qualifies."
+
+**Interaction**:
+- User clicks hotspot or Continue
+- Zoom effect on Proteges section
+- Advances to end screen (A9)
+
+---
+
+## Step A9: End of Path A (Next Steps)
 
 _TBD - Could offer:_
 - Return to choice screen
@@ -188,4 +257,4 @@ _Future development - steps for registered users..._
 - Each step should be 15-30 seconds max
 - Keep language accessible to both mentors (large businesses) and proteges (small businesses)
 - Branching allows personalized experience based on user's familiarity
-- Hotspot order: Welcome → Navigation → Login/SAM
+- Hotspot order: Welcome → Navigation → Login/SAM → Scroll → Community → Mentors → Proteges
