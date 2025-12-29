@@ -493,11 +493,12 @@
 **Screen**: Agreements & Reports main page
 **Effect**: Avatar pops in for page introduction
 **Elements**:
-- Page layout overview
-- Highlight main sections visible
+- Quick Start section with 4 pathway cards
+- "Invite a Protege" banner
+- Agreements list and Reports calendar below
 
-**Video Narration** (Draft - ~15 seconds):
-> "_TBD - Overview of the Agreements & Reports page and what users can do here_"
+**Video Narration** (Draft - ~20 seconds):
+> "This is the Agreements and Reports page — your central hub for managing mentor-protege partnerships. At the top, you'll see the Quick Start section with four pathways to complete. Below that, mentors can invite a protege to start a new agreement. And at the bottom, you'll find your active agreements and an upcoming reports calendar. Let's walk through each section."
 
 **After Video**:
 - Continue button appears
@@ -507,12 +508,16 @@
 
 ### S1-H1: Protege Company Info
 
-**Hotspot Area**: Protege Company Info section
-**Location**: _TBD based on screenshot_
-**Highlight**: Glowing box around section
+**Hotspot Area**: First Quick Start card - "Protege Company Info"
+**Location**: Top-left of Quick Start section
+**Highlight**: Glowing box around card
+**Card Details**:
+- Image of business professionals
+- "Eligibility, Background, Business/Co. Info, Past MPP Participation"
+- Blue "Start" button
 
-**Video Narration** (Draft - ~12 seconds):
-> "_TBD - Explain what Protege Company Info contains and why it matters_"
+**Video Narration** (Draft - ~15 seconds):
+> "The Protege Company Info card is where proteges enter their company details. This includes eligibility information, business background, company structure, and any past participation in the MPP program. Completing this section is essential — it helps the program verify your qualifications and match you with the right mentor."
 
 **Interaction**:
 - User clicks hotspot or Continue
@@ -522,12 +527,16 @@
 
 ### S1-H2: Protege Needs Assessment
 
-**Hotspot Area**: Protege Needs Assessment section
-**Location**: _TBD based on screenshot_
-**Highlight**: Glowing box around section
+**Hotspot Area**: Second Quick Start card - "Protege Needs Assessment"
+**Location**: Second card in Quick Start row
+**Highlight**: Glowing box around card
+**Card Details**:
+- Image of mentor/protege meeting
+- "Discover the places an MPP Mentor can best support your growth"
+- Blue "Start" button
 
-**Video Narration** (Draft - ~12 seconds):
-> "_TBD - Explain the Needs Assessment and its purpose in matching mentors/proteges_"
+**Video Narration** (Draft - ~15 seconds):
+> "The Protege Needs Assessment helps identify where your business needs the most support. Do you need help with technical capabilities? Management systems? Business development? Your answers here guide the mentoring relationship and ensure you get targeted assistance in the areas that matter most to your growth."
 
 **Interaction**:
 - User clicks hotspot or Continue
@@ -537,12 +546,16 @@
 
 ### S1-H3: Mentor Company Info
 
-**Hotspot Area**: Mentor Company Info section
-**Location**: _TBD based on screenshot_
-**Highlight**: Glowing box around section
+**Hotspot Area**: Third Quick Start card - "Mentor Company Info"
+**Location**: Third card in Quick Start row
+**Highlight**: Glowing box around card
+**Card Details**:
+- Image of business team
+- "Eligibility, Background, Capability, Past Performance, Subcontracting"
+- Blue "Review & Edit" button
 
-**Video Narration** (Draft - ~12 seconds):
-> "_TBD - Explain what Mentor Company Info contains_"
+**Video Narration** (Draft - ~15 seconds):
+> "The Mentor Company Info card is for mentors to provide their company details. This includes eligibility, background, capabilities, past performance history, and subcontracting experience. Mentors should keep this information current — it helps proteges understand what expertise and resources you bring to the partnership."
 
 **Interaction**:
 - User clicks hotspot or Continue
@@ -552,12 +565,16 @@
 
 ### S1-H4: Mentor Application
 
-**Hotspot Area**: Mentor Application section
-**Location**: _TBD based on screenshot_
-**Highlight**: Glowing box around section
+**Hotspot Area**: Fourth Quick Start card - "Mentor Application"
+**Location**: Right-most card in Quick Start row
+**Highlight**: Glowing box around card
+**Card Details**:
+- Image of professionals collaborating
+- "Qualifications, Experience with Small Business Assistance"
+- Yellow "Start" button
 
-**Video Narration** (Draft - ~12 seconds):
-> "_TBD - Explain the Mentor Application section_"
+**Video Narration** (Draft - ~15 seconds):
+> "The Mentor Application is where mentors formally apply to participate in the program. You'll provide your qualifications and describe your experience assisting small businesses. This helps the program evaluate your readiness to mentor and ensures proteges are paired with experienced, capable partners."
 
 **Interaction**:
 - User clicks hotspot or Continue
@@ -567,19 +584,24 @@
 
 ### S1-Scroll: Scroll to Agreements
 
-**Effect**: Simulated scroll down to reveal Agreements section
+**Effect**: Simulated scroll down to focus on Agreements section
+**Note**: The banner "Are you a Mentor ready to form a new Agreement?" passes by
 **No Narration** - just visual transition (~2 seconds)
 
 ---
 
-### S1-H5: Agreements
+### S1-H5: Agreements List
 
-**Hotspot Area**: Agreements section (full area)
-**Location**: Below the fold after scroll
-**Highlight**: Glowing box around Agreements area
+**Hotspot Area**: Agreements section (left side) + Reports calendar (right side)
+**Location**: Lower portion of page
+**Highlight**: Glowing box around both Agreements list and Reports area
+**Elements visible**:
+- "Agreements" heading with search bar and agency filter
+- List of active agreements (showing company names, status tags, dates)
+- "Reports - COMING SOON" calendar on right
 
-**Video Narration** (Draft - ~15 seconds):
-> "_TBD - Explain what Agreements are, how to view them, and their importance_"
+**Video Narration** (Draft - ~20 seconds):
+> "Once you have active partnerships, they'll appear in the Agreements section. You can search by company name or filter by agency. Each agreement shows the mentor company, the protege, the start date, and current status — like 'In Process.' On the right, the Reports calendar will help you track important deadlines. Reports functionality is coming soon, so stay tuned for updates!"
 
 **Interaction**:
 - User clicks hotspot or Continue
@@ -590,23 +612,28 @@
 ### S1-Activity: Agreements & Reports Challenge
 
 **Screen**: Activity popup overlay
-**Type**: _TBD (Multiple Choice / Scenario Decision / etc.)_
+**Type**: Scenario Decision
+**Badge**: Document with seal/ribbon
 
 **Scenario Setup**:
-> "_TBD - Story/scenario context for the activity_"
+> "You're a new protege who just registered for the MPP program. Your company wants to find a mentor to help improve your technical capabilities. You've logged into the portal and navigated to Agreements & Reports."
 
-**Question/Task**:
-> "_TBD_"
+**Question**:
+> "What's the FIRST thing you should complete before a mentor can invite you to form an agreement?"
 
-**Answer Choices** (if applicable):
-- A) _TBD_
-- B) _TBD_
-- C) _TBD_
+**Answer Choices**:
+- A) Search for mentors in the Agreements list
+- B) Complete the Protege Company Info and Needs Assessment ✓ (Correct)
+- C) Wait for a mentor to contact you directly
 
-**Feedback**: _TBD_
+**Feedback (Correct)**:
+> "That's right! Before forming an agreement, proteges must complete their Company Info and Needs Assessment. This information helps mentors understand your business and ensures you're matched with the right partner."
+
+**Feedback (Incorrect)**:
+> "Not quite. The first step is to complete your Protege Company Info and Needs Assessment. This provides the foundation for your profile and helps mentors understand how they can best support your growth."
 
 **On Completion**:
-- +1 point added to progress tracker
+- +1 point added to progress tracker (1/6)
 - Badge awarded: Document with seal/ribbon
 - Return to Section Selection Hub (B2)
 - Agreements & Reports card greyed with badge overlay
