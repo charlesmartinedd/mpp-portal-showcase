@@ -482,13 +482,134 @@
 
 ## Section 1: Agreements & Reports
 
-_Walk through with user - TBD_
-
-**Sub-pages to cover**: _TBD_
-**Hotspots**: _TBD_
-**Scenario**: _TBD_
-**Activity Type**: _TBD_
 **Badge**: Document with seal/ribbon
+**Activity Type**: _TBD_
+**Scenario**: _TBD_
+
+---
+
+### S1-Intro: Agreements & Reports Overview
+
+**Screen**: Agreements & Reports main page
+**Effect**: Avatar pops in for page introduction
+**Elements**:
+- Page layout overview
+- Highlight main sections visible
+
+**Video Narration** (Draft - ~15 seconds):
+> "_TBD - Overview of the Agreements & Reports page and what users can do here_"
+
+**After Video**:
+- Continue button appears
+- Advances to first hotspot
+
+---
+
+### S1-H1: Protege Company Info
+
+**Hotspot Area**: Protege Company Info section
+**Location**: _TBD based on screenshot_
+**Highlight**: Glowing box around section
+
+**Video Narration** (Draft - ~12 seconds):
+> "_TBD - Explain what Protege Company Info contains and why it matters_"
+
+**Interaction**:
+- User clicks hotspot or Continue
+- Advances to next hotspot (S1-H2)
+
+---
+
+### S1-H2: Protege Needs Assessment
+
+**Hotspot Area**: Protege Needs Assessment section
+**Location**: _TBD based on screenshot_
+**Highlight**: Glowing box around section
+
+**Video Narration** (Draft - ~12 seconds):
+> "_TBD - Explain the Needs Assessment and its purpose in matching mentors/proteges_"
+
+**Interaction**:
+- User clicks hotspot or Continue
+- Advances to next hotspot (S1-H3)
+
+---
+
+### S1-H3: Mentor Company Info
+
+**Hotspot Area**: Mentor Company Info section
+**Location**: _TBD based on screenshot_
+**Highlight**: Glowing box around section
+
+**Video Narration** (Draft - ~12 seconds):
+> "_TBD - Explain what Mentor Company Info contains_"
+
+**Interaction**:
+- User clicks hotspot or Continue
+- Advances to next hotspot (S1-H4)
+
+---
+
+### S1-H4: Mentor Application
+
+**Hotspot Area**: Mentor Application section
+**Location**: _TBD based on screenshot_
+**Highlight**: Glowing box around section
+
+**Video Narration** (Draft - ~12 seconds):
+> "_TBD - Explain the Mentor Application section_"
+
+**Interaction**:
+- User clicks hotspot or Continue
+- Advances to scroll transition
+
+---
+
+### S1-Scroll: Scroll to Agreements
+
+**Effect**: Simulated scroll down to reveal Agreements section
+**No Narration** - just visual transition (~2 seconds)
+
+---
+
+### S1-H5: Agreements
+
+**Hotspot Area**: Agreements section (full area)
+**Location**: Below the fold after scroll
+**Highlight**: Glowing box around Agreements area
+
+**Video Narration** (Draft - ~15 seconds):
+> "_TBD - Explain what Agreements are, how to view them, and their importance_"
+
+**Interaction**:
+- User clicks hotspot or Continue
+- Advances to activity
+
+---
+
+### S1-Activity: Agreements & Reports Challenge
+
+**Screen**: Activity popup overlay
+**Type**: _TBD (Multiple Choice / Scenario Decision / etc.)_
+
+**Scenario Setup**:
+> "_TBD - Story/scenario context for the activity_"
+
+**Question/Task**:
+> "_TBD_"
+
+**Answer Choices** (if applicable):
+- A) _TBD_
+- B) _TBD_
+- C) _TBD_
+
+**Feedback**: _TBD_
+
+**On Completion**:
+- +1 point added to progress tracker
+- Badge awarded: Document with seal/ribbon
+- Return to Section Selection Hub (B2)
+- Agreements & Reports card greyed with badge overlay
 
 ---
 
