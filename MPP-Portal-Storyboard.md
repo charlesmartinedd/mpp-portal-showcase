@@ -1212,25 +1212,332 @@
 
 ## Section 5: Becoming a Mentor
 
-_Walk through with user - TBD_
-
-**Sub-pages to cover**: _TBD_
-**Hotspots**: _TBD_
-**Scenario**: _TBD_
-**Activity Type**: _TBD_
 **Badge**: Guiding hand/lighthouse
+**Activity Type**: Multiple Choice
+**Scenario**: Evaluating mentor eligibility requirements
+
+---
+
+### S5-Intro: Mentors Page Overview
+
+**Screen**: Mentors page under "About MPP"
+**Effect**: Avatar pops in for page introduction
+**Elements**:
+- "Mentors" heading
+- 6 content boxes covering program info, requirements, steps, and community
+
+**Video Narration** (Draft - ~15 seconds):
+> "This is the Mentors page — your guide to becoming an MPP mentor. Here you'll learn about the program, check if you meet the requirements, see the steps to apply, and connect with the mentor community. Let's walk through each section."
+
+**After Video**:
+- Continue button appears
+- Advances to first hotspot
+
+---
+
+### S5-H1: Program Update
+
+**Hotspot Area**: "Program Update" box (top)
+**Highlight**: Glowing box around section
+**Content**:
+- MPP logo
+- Text about program success (190+ small businesses helped)
+- Information about mentor-protege partnerships and benefits
+
+**Video Narration** (Draft - ~15 seconds):
+> "The Program Update highlights the impact of the Mentor-Protege Program. Over the past five years, DoD's MPP has helped more than 190 small businesses fill unique niches and become part of the military's supply chain. Successful agreements create a winning relationship for the protege, the mentor, and the DoD."
+
+**Interaction**:
+- User clicks hotspot or Continue
+- Advances to next hotspot (S5-H2)
+
+---
+
+### S5-H2: Mentor Requirements
+
+**Hotspot Area**: "Are you ready to become a mentor?" box
+**Highlight**: Glowing box around requirements section
+**Content**:
+- Basic Mentor Requirements:
+  - Current Subcontracting Plan (active, approved plan with DoD or Federal agency)
+  - Contracts Totaling $25M (DoD contracts at least $25M in previous fiscal year)
+  - Prime Contractor or 8(a) Graduate
+  - Federal Contract Eligible (not on debarred/suspended list)
+- Link to DFARS Appendix I-102
+
+**Video Narration** (Draft - ~20 seconds):
+> "Before applying, make sure you meet the basic requirements. You need a current subcontracting plan with DoD or another Federal agency. Your company must have at least 25 million dollars in DoD contracts from the previous fiscal year. You should be a prime contractor or an 8(a) Business Development Program graduate. And you must be eligible for Federal contracts — not on any debarred or suspended list."
+
+**Interaction**:
+- User clicks hotspot or Continue
+- Advances to next hotspot (S5-H3)
+
+---
+
+### S5-H3: 3 Easy Steps
+
+**Hotspot Area**: "Get ready to mentor in 3 easy steps" box (right side)
+**Highlight**: Glowing box around steps section
+**Content**:
+- Step 1: Gather the required documentation (see list)
+- Step 2: Complete your application (about 30 mins)
+- Step 3: Receive approval
+- "Apply now to become a Mentor" link
+
+**Video Narration** (Draft - ~15 seconds):
+> "Ready to apply? It's a three-step process. First, gather your required documentation — the checklist is available on the Resources page. Second, complete your application, which takes about 30 minutes. Third, submit and wait for approval. Click the link to start your application."
+
+**Interaction**:
+- User clicks hotspot or Continue
+- Advances to next hotspot (S5-H4)
+
+---
+
+### S5-H4: Not Ready Yet?
+
+**Hotspot Area**: "Not quite ready to become a Mentor?" box
+**Highlight**: Glowing box around section
+**Content**:
+- Suggestion to consider becoming a Protégé instead
+- "Make important industry connections now"
+- "Learn more about Protégés" link
+- Image of person with "Mentor Wanted" sign
+
+**Video Narration** (Draft - ~12 seconds):
+> "Not quite ready to be a mentor? That's okay. Consider becoming a protege first to build your capabilities and make valuable industry connections. Click the link to learn more about the protege path."
+
+**Interaction**:
+- User clicks hotspot or Continue
+- Scroll transition to bottom section
+
+---
+
+### S5-H5: Contact Form
+
+**Hotspot Area**: "Request to be contacted" form (bottom-left)
+**Highlight**: Glowing box around form
+**Content**:
+- "Request to be contacted by one of our team for more info:"
+- From email field (pre-filled)
+- Message text area
+- "Send" button
+
+**Video Narration** (Draft - ~10 seconds):
+> "Have questions about becoming a mentor? Use this contact form to reach out. Your email is pre-filled — just type your question and click Send to hear back from the MPP team."
+
+**Interaction**:
+- User clicks hotspot or Continue
+- Advances to final hotspot (S5-H6)
+
+---
+
+### S5-H6: Mentor Community
+
+**Hotspot Area**: "Join our Mentoring community" box (bottom-right)
+**Highlight**: Glowing box around company logos section
+**Content**:
+- "Join our Mentoring community representing top Prime Contractor companies like these:"
+- Company logos: SAIC, IBM, GDIT, Rockwell Collins, ULA, and many more
+- "Apply to become a Mentor" link
+
+**Video Narration** (Draft - ~15 seconds):
+> "Join a community of top Prime Contractors who are already making a difference. Companies like SAIC, IBM, GDIT, Rockwell Collins, and many others are active mentors in the program. Click 'Apply to become a Mentor' when you're ready to join them."
+
+**Interaction**:
+- User clicks hotspot or Continue
+- Advances to activity
+
+---
+
+### S5-Activity: Becoming a Mentor Challenge
+
+**Screen**: Activity popup overlay
+**Type**: Multiple Choice
+**Badge**: Guiding hand/lighthouse
+
+**Scenario Setup**:
+> "Your company's leadership wants to become an MPP mentor. They've asked you to verify if the company meets the basic requirements."
+
+**Question**:
+> "Which of the following is NOT a basic requirement to become an MPP mentor?"
+
+**Answer Choices**:
+- A) Having a current subcontracting plan with DoD or a Federal agency
+- B) Having at least $25 million in DoD contracts from the previous fiscal year
+- C) Having at least 10 years of experience as a government contractor ✓ (Correct - this is NOT a requirement)
+- D) Being eligible for Federal contracts and not on a debarred list
+
+**Feedback (Correct)**:
+> "That's right! There's no minimum years-of-experience requirement to become a mentor. The key requirements are: a current subcontracting plan, $25M+ in DoD contracts, prime contractor or 8(a) graduate status, and Federal contract eligibility."
+
+**Feedback (Incorrect)**:
+> "Not quite. The correct answer is C — there's no minimum years-of-experience requirement. The actual requirements are: subcontracting plan, $25M+ in DoD contracts, prime contractor or 8(a) status, and Federal contract eligibility."
+
+**On Completion**:
+- +1 point added to progress tracker (5/6)
+- Badge awarded: Guiding hand/lighthouse
+- Return to Section Selection Hub (B2)
+- Becoming a Mentor card greyed with badge overlay
 
 ---
 
 ## Section 6: Becoming a Protege
 
-_Walk through with user - TBD_
-
-**Sub-pages to cover**: _TBD_
-**Hotspots**: _TBD_
-**Scenario**: _TBD_
-**Activity Type**: _TBD_
 **Badge**: Rising star/growth
+**Activity Type**: Fill in the Blank
+**Scenario**: Small business owner preparing to apply as a protege
+
+---
+
+### S6-Intro: Proteges Page Overview
+
+**Screen**: Proteges page under "About MPP"
+**Effect**: Avatar pops in for page introduction
+**Elements**:
+- "Protégés" heading
+- 5 content boxes covering program info, requirements, steps, and assistance types
+
+**Video Narration** (Draft - ~15 seconds):
+> "This is the Protégés page — your roadmap to joining the Mentor-Protege Program as a small business. Here you'll learn about the assistance available, check if you qualify, see the steps to apply, and connect with potential mentors. Let's explore each section."
+
+**After Video**:
+- Continue button appears
+- Advances to first hotspot
+
+---
+
+### S6-H1: Program Benefits
+
+**Hotspot Area**: "Program Benefits" or "What Protégés Receive" box (top)
+**Highlight**: Glowing box around section
+**Content**:
+- MPP logo
+- Text about protege benefits and assistance types
+- Technical, Management, Financial, and other developmental assistance
+- How the program helps small businesses compete for DoD contracts
+
+**Video Narration** (Draft - ~18 seconds):
+> "As a protege, you'll receive hands-on developmental assistance from experienced Prime Contractors. This includes technical assistance to improve your products and services, management support to strengthen your operations, and business development guidance to help you compete for DoD contracts. The program is designed to build your capabilities and open new doors."
+
+**Interaction**:
+- User clicks hotspot or Continue
+- Advances to next hotspot (S6-H2)
+
+---
+
+### S6-H2: Protege Requirements
+
+**Hotspot Area**: "Are you eligible to become a Protégé?" box
+**Highlight**: Glowing box around requirements section
+**Content**:
+- Basic Protégé Requirements:
+  - Small Business (must qualify as a small business under SBA size standards)
+  - Eligible Categories (SDB, WOSB, HUBZone, SDVOSB, or other qualifying categories)
+  - No Active DoD MPP Agreement (cannot currently have an active agreement)
+  - Federal Contract Eligible (not on debarred/suspended list)
+- Link to eligibility details in DFARS
+
+**Video Narration** (Draft - ~20 seconds):
+> "To become a protege, you must meet several requirements. First, your company must qualify as a small business under SBA size standards. You should fall into an eligible category — such as Small Disadvantaged Business, Women-Owned, HUBZone, Service-Disabled Veteran-Owned, or other qualifying designations. You cannot have an active MPP agreement already. And you must be eligible for Federal contracts — not on any debarred or suspended list."
+
+**Interaction**:
+- User clicks hotspot or Continue
+- Advances to next hotspot (S6-H3)
+
+---
+
+### S6-H3: 3 Easy Steps
+
+**Hotspot Area**: "Become a Protégé in 3 easy steps" box
+**Highlight**: Glowing box around steps section
+**Content**:
+- Step 1: Complete your Protege Company Info and Needs Assessment
+- Step 2: Connect with an approved mentor
+- Step 3: Work together to submit an agreement
+- "Get started now" link
+
+**Video Narration** (Draft - ~15 seconds):
+> "Becoming a protege is a three-step process. First, complete your Company Info and Needs Assessment in the portal — this takes about 20 minutes. Second, browse the Approved Mentors directory and connect with a mentor that fits your needs. Third, work together with your mentor to submit an agreement for approval."
+
+**Interaction**:
+- User clicks hotspot or Continue
+- Advances to next hotspot (S6-H4)
+
+---
+
+### S6-H4: Types of Assistance
+
+**Hotspot Area**: "Types of Developmental Assistance" box
+**Highlight**: Glowing box around assistance section
+**Content**:
+- Technical Assistance (engineering, R&D, quality assurance)
+- Management Assistance (business operations, financial management)
+- Administrative Assistance (HR, IT systems, facilities)
+- Training & Education (workshops, certifications, skill development)
+- Business Development (proposal writing, contracting, marketing)
+
+**Video Narration** (Draft - ~20 seconds):
+> "The program offers five types of developmental assistance. Technical assistance covers engineering, R&D, and quality processes. Management assistance strengthens your business operations and financial systems. Administrative assistance helps with HR, IT, and facilities. Training and education builds your team's skills and certifications. And business development guidance helps you write winning proposals and market your capabilities."
+
+**Interaction**:
+- User clicks hotspot or Continue
+- Advances to next hotspot (S6-H5)
+
+---
+
+### S6-H5: Find a Mentor / Contact
+
+**Hotspot Area**: "Ready to find a Mentor?" or Contact section box (bottom)
+**Highlight**: Glowing box around section
+**Content**:
+- "Browse our Approved Mentors" link
+- Contact form for questions
+- "Request to be contacted by one of our team"
+- Send button
+
+**Video Narration** (Draft - ~15 seconds):
+> "Ready to take the next step? Click 'Browse Approved Mentors' to search for companies that match your needs and goals. If you have questions before applying, use the contact form to reach out to the MPP team. They're here to help you find the right path."
+
+**Interaction**:
+- User clicks hotspot or Continue
+- Advances to activity
+
+---
+
+### S6-Activity: Becoming a Protege Challenge
+
+**Screen**: Activity popup overlay
+**Type**: Fill in the Blank
+**Badge**: Rising star/growth
+
+**Scenario Setup**:
+> "You're the owner of a small technology company interested in becoming an MPP protege. Your business development manager has some questions about the application process."
+
+**Fill in the Blank Questions**:
+
+**Q1**: "To participate in the MPP as a protege, your company must qualify as a _______ business under SBA size standards."
+- **Answer**: small (or "small business")
+- **Hint**: Think about the size classification required for proteges.
+
+**Q2**: "Before connecting with a mentor, proteges must complete their Company Info and _______ Assessment in the portal."
+- **Answer**: Needs
+- **Hint**: This assessment helps identify where you need the most support.
+
+**Q3**: "Proteges receive five types of developmental assistance: Technical, Management, Administrative, Training & Education, and _______ Development."
+- **Answer**: Business
+- **Hint**: This type of assistance helps with proposals and contracting.
+
+**Feedback (All Correct)**:
+> "Excellent! You understand the protege requirements and process. You're ready to complete your profile and start connecting with potential mentors."
+
+**Feedback (Some Incorrect)**:
+> "Close! Remember: proteges must be small businesses, complete a Needs Assessment to identify growth areas, and can receive Business Development assistance among other types of support."
+
+**On Completion**:
+- +1 point added to progress tracker (6/6)
+- Badge awarded: Rising star/growth
+- Section Selection Hub shows all 6 badges
+- Automatically advances to Final Completion screen (B-Final)
 
 ---
 
