@@ -856,13 +856,264 @@
 
 ## Section 3: Resources
 
-_Walk through with user - TBD_
-
-**Sub-pages to cover**: _TBD_
-**Hotspots**: _TBD_
-**Scenario**: _TBD_
-**Activity Type**: _TBD_
 **Badge**: Book or toolbox
+**Activity Type**: Matching
+**Scenario**: Finding the right resource for a specific task
+
+---
+
+### S3-Intro: Resources Overview
+
+**Screen**: Resources main page
+**Effect**: Avatar pops in for page introduction
+**Elements**:
+- "Resources" heading
+- 12 resource boxes in grid layout
+- Contact form at bottom
+
+**Video Narration** (Draft - ~20 seconds):
+> "The Resources page is your one-stop shop for MPP tools, templates, and reference materials. You'll find directories to connect with mentors, proteges, and subcontractors, regulatory guidance like DFARS, downloadable report templates, and contact information for program support. Let's explore what's available."
+
+**After Video**:
+- Continue button appears
+- Advances to first row of hotspots
+
+---
+
+### S3-H1: Approved Mentors
+
+**Hotspot Area**: "Approved Mentors" card (top-left)
+**Highlight**: Glowing box around card
+**Content**:
+- Icon with people
+- "Connect with an MPP Approved Mentor. Search, view & download contact information."
+- "Go to Approved Mentors" button
+
+**Video Narration** (Draft - ~10 seconds):
+> "The Approved Mentors directory lets proteges search for and connect with verified mentor companies. You can view profiles and download contact information to reach out directly."
+
+---
+
+### S3-H2: Interested Protégés
+
+**Hotspot Area**: "Interested Protégés" card (top-center)
+**Highlight**: Glowing box around card
+**Content**:
+- Icon with people
+- "Discover Protégés looking for mentorship. Search, view & download contact information."
+- "Go to Interested Protégés" button
+
+**Video Narration** (Draft - ~10 seconds):
+> "Mentors can browse the Interested Protégés directory to find small businesses actively seeking mentorship. Search by capability, location, or certification to find the right match."
+
+---
+
+### S3-H3: Authorized Subcontractors
+
+**Hotspot Area**: "Authorized Subcontractors" card (top-right)
+**Highlight**: Glowing box around card
+**Content**:
+- "Find an Authorized Subcontractor to help with your Government contracting needs."
+- "Go to Authorized Subcontractors" button
+
+**Video Narration** (Draft - ~10 seconds):
+> "The Authorized Subcontractors directory helps you find qualified small businesses for government subcontracting opportunities. Search, view, and download contact information."
+
+---
+
+### S3-Scroll1: Scroll to Row 2
+
+**Effect**: Smooth scroll to next row of resources
+**No Narration** - visual transition (~1 sec)
+
+---
+
+### S3-H4: Annual MPP Summit
+
+**Hotspot Area**: "Annual MPP Summit" card
+**Highlight**: Glowing box around card
+**Content**:
+- "Learn more about connecting with Mentors and Protégés and learning from expert speakers at our Annual MPP Summit."
+- "GET MORE INFORMATION" link
+
+**Video Narration** (Draft - ~10 seconds):
+> "The Annual MPP Summit is the program's flagship networking event. Find information about upcoming summits, past event highlights, and how to register."
+
+---
+
+### S3-H5: Defense Federal Acquisition Regulations Supplement (DFARS)
+
+**Hotspot Area**: "DFARS" card
+**Highlight**: Glowing box around card
+**Content**:
+- "Get information about acquisition regulations by viewing the DFARS and Procedures, Guidance, and Information (PGI)."
+- "GO TO DFARS" link
+
+**Video Narration** (Draft - ~12 seconds):
+> "DFARS — the Defense Federal Acquisition Regulations Supplement — contains the acquisition policies and procedures for the Department of Defense. This is essential reading for understanding the regulatory framework."
+
+---
+
+### S3-H6: DFARS Appendix I
+
+**Hotspot Area**: "DFARS Appendix I" card
+**Highlight**: Glowing box around card
+**Content**:
+- "See the policies and procedures used to implement the DoD Mentor-Protégé Program which provides incentives to DoD contractors."
+- "GO TO DFARS APPENDIX I" link
+
+**Video Narration** (Draft - ~10 seconds):
+> "DFARS Appendix I is the specific section governing the Mentor-Protégé Program. It outlines the incentives available to DoD contractors who mentor small businesses."
+
+---
+
+### S3-Scroll2: Scroll to Row 3
+
+**Effect**: Smooth scroll to next row
+**No Narration** - visual transition (~1 sec)
+
+---
+
+### S3-H7: DFARS Subpart 219.71
+
+**Hotspot Area**: "DFARS Subpart 219.71" card
+**Highlight**: Glowing box around card
+**Content**:
+- "See the scope, contracting officer responsibilities, developmental assistance costs eligible for reimbursement or credit, and reporting requirements."
+- "GO TO DFARS SUBPART 219.71" link
+
+**Video Narration** (Draft - ~12 seconds):
+> "DFARS Subpart 219.71 details the program scope, what costs qualify for reimbursement or credit, and the reporting and performance review requirements. Bookmark this for reference."
+
+---
+
+### S3-H8: MPP Monthly Execution Report Template
+
+**Hotspot Area**: "MPP Monthly Execution Report Template" card
+**Highlight**: Glowing box around card
+**Content**:
+- "All mentors shall invoice at least once monthly and submit monthly reports to the Component/Agency MPP PM by the 15th of each month."
+- "DOWNLOAD MONTHLY EXECUTION REPORT TEMPLATE (.XLSX)" link
+
+**Video Narration** (Draft - ~12 seconds):
+> "The Monthly Execution Report Template is required for all mentors. Submit it by the 15th of each month to your Component or Agency Program Manager. Download the Excel template here."
+
+---
+
+### S3-H9: MPP New Agreement Checklist
+
+**Hotspot Area**: "MPP New Agreement Checklist" card
+**Highlight**: Glowing box around card
+**Content**:
+- "Ensure you have all the documentation you need to move forward with a new Mentor-Protégé Agreement."
+- "OPEN NEW AGREEMENT CHECKLIST (.DOC)" link
+
+**Video Narration** (Draft - ~10 seconds):
+> "Starting a new agreement? Download the New Agreement Checklist to make sure you have all required documentation before submitting."
+
+---
+
+### S3-Scroll3: Scroll to Row 4
+
+**Effect**: Smooth scroll to next row
+**No Narration** - visual transition (~1 sec)
+
+---
+
+### S3-H10: MPP Post-Agreement Report
+
+**Hotspot Area**: "MPP Post-Agreement Report" card
+**Highlight**: Glowing box around card
+**Content**:
+- "Submit your report 1 year plus 1 month after agreement completion for all completed and/or terminated agreements."
+- "OPEN POST-AGREEMENT REPORT TEMPLATE (.XLS)" link
+
+**Video Narration** (Draft - ~12 seconds):
+> "The Post-Agreement Report is due one year and one month after your agreement ends — even if no activity occurred. Download the template to ensure timely compliance."
+
+---
+
+### S3-H11: MPP Semi-Annual Report
+
+**Hotspot Area**: "MPP Semi-Annual Report" card
+**Highlight**: Glowing box around card
+**Content**:
+- "Submit your report no later than 30 days following the end of each semiannual reporting period (30 Apr or 31 Oct)."
+- "OPEN SEMI-ANNUAL REPORT TEMPLATE (.XLSX)" link
+
+**Video Narration** (Draft - ~12 seconds):
+> "The Semi-Annual Report is due within 30 days after April 30th and October 31st for all active agreements — including those with zero activity. Download the Excel template here."
+
+---
+
+### S3-H12: OSBP Contacts Directory
+
+**Hotspot Area**: "OSBP Contacts Directory" card
+**Highlight**: Glowing box around card
+**Content**:
+- "Access the contact information for the OSBP MPP DoD Components."
+- "GO TO OSBP CONTACTS DIRECTORY" link
+
+**Video Narration** (Draft - ~10 seconds):
+> "Need to reach your program office? The OSBP Contacts Directory lists contact information for all DoD Component offices that manage the Mentor-Protégé Program."
+
+---
+
+### S3-Scroll4: Scroll to Contact Form
+
+**Effect**: Smooth scroll to bottom of page
+**No Narration** - visual transition (~1 sec)
+
+---
+
+### S3-H13: Contact Form
+
+**Hotspot Area**: "Didn't find what you were looking for?" contact form
+**Highlight**: Glowing box around entire form section
+**Content**:
+- "Request to connect with one of our team:"
+- From email field (pre-filled)
+- Message text area
+- "Send" button
+
+**Video Narration** (Draft - ~12 seconds):
+> "Can't find what you need? Use this contact form to request help from the MPP team. Your email is pre-filled — just type your question and click Send. Someone will follow up with you directly."
+
+**Interaction**:
+- User clicks hotspot or Continue
+- Advances to activity
+
+---
+
+### S3-Activity: Resources Challenge
+
+**Screen**: Activity popup overlay
+**Type**: Matching
+**Badge**: Book or toolbox
+
+**Scenario Setup**:
+> "You're an MPP Program Manager helping participants find the right resources. Match each task to the correct resource."
+
+**Matching Pairs**:
+
+| Task | Resource |
+|------|----------|
+| Find a small business to mentor | Interested Protégés Directory |
+| Submit monthly invoices | Monthly Execution Report Template |
+| Check if your costs qualify for credit | DFARS Subpart 219.71 |
+| Prepare documentation for a new partnership | New Agreement Checklist |
+
+**Feedback (All Correct)**:
+> "Excellent! You know your resources. Being able to quickly find the right tool or template will make managing your MPP participation much smoother."
+
+**Feedback (Some Incorrect)**:
+> "Close! Review the resources again — each one serves a specific purpose. The directories help you connect, the templates help you report, and DFARS provides the regulatory guidance."
+
+**On Completion**:
+- +1 point added to progress tracker (3/6)
+- Badge awarded: Book or toolbox
+- Return to Section Selection Hub (B2)
+- Resources card greyed with badge overlay
 
 ---
 
