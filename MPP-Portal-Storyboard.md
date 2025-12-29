@@ -1395,10 +1395,10 @@
 **Effect**: Avatar pops in for page introduction
 **Elements**:
 - "Protégés" heading
-- 5 content boxes covering program info, requirements, steps, and assistance types
+- 5 content boxes: Program Update, Requirements, Get on the List, Thinking about Mentoring, Contact
 
 **Video Narration** (Draft - ~15 seconds):
-> "This is the Protégés page — your roadmap to joining the Mentor-Protege Program as a small business. Here you'll learn about the assistance available, check if you qualify, see the steps to apply, and connect with potential mentors. Let's explore each section."
+> "This is the Protégés page — your roadmap to joining the Mentor-Protege Program as a small business. Here you'll learn about program success, check if you qualify, add yourself to the interested parties list, and connect with the team. Let's explore each section."
 
 **After Video**:
 - Continue button appears
@@ -1406,18 +1406,18 @@
 
 ---
 
-### S6-H1: Program Benefits
+### S6-H1: Program Update
 
-**Hotspot Area**: "Program Benefits" or "What Protégés Receive" box (top)
+**Hotspot Area**: "Program Update" box (top center)
 **Highlight**: Glowing box around section
 **Content**:
 - MPP logo
-- Text about protege benefits and assistance types
-- Technical, Management, Financial, and other developmental assistance
-- How the program helps small businesses compete for DoD contracts
+- Text: "Under the MPP, small businesses are partnered with larger companies, and in the past five years, DoD's MPP has successfully helped more than 190 small businesses fill unique niches and become part of the military's supply chain."
+- "Many mentors have made the MPP an integral part of their sourcing plans. Protégés have used their involvement in the MPP to develop technical capabilities."
+- "Successful mentor-protégé agreements provide a winning relationship for the protégé, the mentor and the DoD."
 
 **Video Narration** (Draft - ~18 seconds):
-> "As a protege, you'll receive hands-on developmental assistance from experienced Prime Contractors. This includes technical assistance to improve your products and services, management support to strengthen your operations, and business development guidance to help you compete for DoD contracts. The program is designed to build your capabilities and open new doors."
+> "The Program Update highlights the impact of the Mentor-Protege Program. Over the past five years, DoD's MPP has helped more than 190 small businesses fill unique niches and become part of the military's supply chain. Successful agreements create a winning relationship — for the protege, the mentor, and the Department of Defense."
 
 **Interaction**:
 - User clicks hotspot or Continue
@@ -1427,18 +1427,25 @@
 
 ### S6-H2: Protege Requirements
 
-**Hotspot Area**: "Are you eligible to become a Protégé?" box
-**Highlight**: Glowing box around requirements section
+**Hotspot Area**: "Are you ready to become a Protégé?" box (left side)
+**Highlight**: Glowing box around entire requirements section including the 9 category boxes
 **Content**:
-- Basic Protégé Requirements:
-  - Small Business (must qualify as a small business under SBA size standards)
-  - Eligible Categories (SDB, WOSB, HUBZone, SDVOSB, or other qualifying categories)
-  - No Active DoD MPP Agreement (cannot currently have an active agreement)
-  - Federal Contract Eligible (not on debarred/suspended list)
-- Link to eligibility details in DFARS
+- BASIC PROTÉGÉ PARTICIPATION REQUIREMENTS INCLUDE:
+  - 1. Must have less than half the size standard corresponding to primary NAICS code
+  - AND 2. Must not be owned or managed by individuals or entities that directly or indirectly have stock options or convertible securities in the mentor firm
+- + ONE OR MORE OF THE FOLLOWING (9 category boxes):
+  - Small business concern owned and controlled by socially and economically disadvantaged individuals
+  - Business entity owned and controlled by an Indian tribe
+  - Business entity owned and controlled by a Native Hawaiian Organization
+  - Qualified organization employing severely disabled individuals
+  - Small business concern owned and controlled by women
+  - Small business concern owned and controlled by service-disabled veterans
+  - Qualified HUBZone small business concern
+  - Small business concern that is a nontraditional defense contractor
+  - Small business concern that currently provides goods/services critical to enhancing capabilities of the defense supplier base
 
-**Video Narration** (Draft - ~20 seconds):
-> "To become a protege, you must meet several requirements. First, your company must qualify as a small business under SBA size standards. You should fall into an eligible category — such as Small Disadvantaged Business, Women-Owned, HUBZone, Service-Disabled Veteran-Owned, or other qualifying designations. You cannot have an active MPP agreement already. And you must be eligible for Federal contracts — not on any debarred or suspended list."
+**Video Narration** (Draft - ~25 seconds):
+> "To become a protege, you must meet two basic requirements. First, your company must have less than half the size standard for your primary NAICS code. Second, you cannot be owned or managed by anyone with stock options or securities in your potential mentor's firm. You must also fall into one of nine eligible categories — including socially disadvantaged, women-owned, service-disabled veteran-owned, HUBZone, Indian tribe, Native Hawaiian organization, or nontraditional defense contractor."
 
 **Interaction**:
 - User clicks hotspot or Continue
@@ -1446,18 +1453,18 @@
 
 ---
 
-### S6-H3: 3 Easy Steps
+### S6-H3: Get on the List
 
-**Hotspot Area**: "Become a Protégé in 3 easy steps" box
-**Highlight**: Glowing box around steps section
+**Hotspot Area**: "Mentor partnerships are the secret sauce - get on the list!" box (top-right)
+**Highlight**: Glowing box around section
 **Content**:
-- Step 1: Complete your Protege Company Info and Needs Assessment
-- Step 2: Connect with an approved mentor
-- Step 3: Work together to submit an agreement
-- "Get started now" link
+- "Elevate your company, stay relevant & tap into exponential networks of opportunity."
+- "Let potential Mentors know you're interested in connecting."
+- "Add your company to the Interested Parties list" link (blue)
+- Image of person using phone/app
 
 **Video Narration** (Draft - ~15 seconds):
-> "Becoming a protege is a three-step process. First, complete your Company Info and Needs Assessment in the portal — this takes about 20 minutes. Second, browse the Approved Mentors directory and connect with a mentor that fits your needs. Third, work together with your mentor to submit an agreement for approval."
+> "Ready to be discovered by mentors? Add your company to the Interested Parties list. This puts you on the radar of approved mentors who are actively looking for proteges. Elevate your company, stay relevant, and tap into exponential networks of opportunity."
 
 **Interaction**:
 - User clicks hotspot or Continue
@@ -1465,19 +1472,17 @@
 
 ---
 
-### S6-H4: Types of Assistance
+### S6-H4: Thinking About Becoming a Mentor?
 
-**Hotspot Area**: "Types of Developmental Assistance" box
-**Highlight**: Glowing box around assistance section
+**Hotspot Area**: "Thinking about becoming a Mentor?" box (middle-right)
+**Highlight**: Glowing box around section
 **Content**:
-- Technical Assistance (engineering, R&D, quality assurance)
-- Management Assistance (business operations, financial management)
-- Administrative Assistance (HR, IT systems, facilities)
-- Training & Education (workshops, certifications, skill development)
-- Business Development (proposal writing, contracting, marketing)
+- "Learn more about the opportunity and benefits of becoming an MPP Mentor."
+- "See more about Mentors here" link (blue)
+- Image of businessman in suit
 
-**Video Narration** (Draft - ~20 seconds):
-> "The program offers five types of developmental assistance. Technical assistance covers engineering, R&D, and quality processes. Management assistance strengthens your business operations and financial systems. Administrative assistance helps with HR, IT, and facilities. Training and education builds your team's skills and certifications. And business development guidance helps you write winning proposals and market your capabilities."
+**Video Narration** (Draft - ~12 seconds):
+> "Already a larger company? You might be ready to become a mentor instead. Click 'See more about Mentors here' to learn about the benefits and requirements of guiding a small business through the MPP."
 
 **Interaction**:
 - User clicks hotspot or Continue
@@ -1485,18 +1490,18 @@
 
 ---
 
-### S6-H5: Find a Mentor / Contact
+### S6-H5: Contact Form
 
-**Hotspot Area**: "Ready to find a Mentor?" or Contact section box (bottom)
-**Highlight**: Glowing box around section
+**Hotspot Area**: "Request to be contacted" form (bottom-left)
+**Highlight**: Glowing box around form
 **Content**:
-- "Browse our Approved Mentors" link
-- Contact form for questions
-- "Request to be contacted by one of our team"
-- Send button
+- "Request to be contacted by one of our team for more info:"
+- From email field (pre-filled with user's email)
+- Message text area (placeholder: "I'd like to have someone contact me with more information about becoming a Protégé...")
+- "Send" button (blue)
 
-**Video Narration** (Draft - ~15 seconds):
-> "Ready to take the next step? Click 'Browse Approved Mentors' to search for companies that match your needs and goals. If you have questions before applying, use the contact form to reach out to the MPP team. They're here to help you find the right path."
+**Video Narration** (Draft - ~12 seconds):
+> "Have questions about becoming a protege? Use this contact form to reach out. Your email is pre-filled — just type your question and click Send. The MPP team will follow up to help you get started."
 
 **Interaction**:
 - User clicks hotspot or Continue
@@ -1511,27 +1516,27 @@
 **Badge**: Rising star/growth
 
 **Scenario Setup**:
-> "You're the owner of a small technology company interested in becoming an MPP protege. Your business development manager has some questions about the application process."
+> "You're the owner of a small technology company interested in becoming an MPP protege. Your business development manager has some questions about the eligibility requirements."
 
 **Fill in the Blank Questions**:
 
-**Q1**: "To participate in the MPP as a protege, your company must qualify as a _______ business under SBA size standards."
-- **Answer**: small (or "small business")
-- **Hint**: Think about the size classification required for proteges.
+**Q1**: "To become a protege, your company must have less than _______ the size standard corresponding to your primary NAICS code."
+- **Answer**: half
+- **Hint**: Think about the fraction mentioned in the first basic requirement.
 
-**Q2**: "Before connecting with a mentor, proteges must complete their Company Info and _______ Assessment in the portal."
-- **Answer**: Needs
-- **Hint**: This assessment helps identify where you need the most support.
+**Q2**: "You cannot be owned or managed by anyone with stock options or convertible _______ in your potential mentor's firm."
+- **Answer**: securities
+- **Hint**: This is a type of financial instrument.
 
-**Q3**: "Proteges receive five types of developmental assistance: Technical, Management, Administrative, Training & Education, and _______ Development."
-- **Answer**: Business
-- **Hint**: This type of assistance helps with proposals and contracting.
+**Q3**: "To get noticed by potential mentors, you should add your company to the Interested _______ list."
+- **Answer**: Parties
+- **Hint**: This list helps mentors find proteges who want to connect.
 
 **Feedback (All Correct)**:
-> "Excellent! You understand the protege requirements and process. You're ready to complete your profile and start connecting with potential mentors."
+> "Excellent! You understand the protege eligibility requirements. You're ready to check your qualifications and add your company to the Interested Parties list."
 
 **Feedback (Some Incorrect)**:
-> "Close! Remember: proteges must be small businesses, complete a Needs Assessment to identify growth areas, and can receive Business Development assistance among other types of support."
+> "Close! Remember: proteges must have less than HALF the size standard, cannot have ownership connections through SECURITIES with mentors, and should add themselves to the Interested PARTIES list to be discovered."
 
 **On Completion**:
 - +1 point added to progress tracker (6/6)
