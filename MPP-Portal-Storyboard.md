@@ -642,13 +642,215 @@
 
 ## Section 2: Applications
 
-_Walk through with user - TBD_
-
-**Sub-pages to cover**: _TBD_
-**Hotspots**: _TBD_
-**Scenario**: _TBD_
-**Activity Type**: _TBD_
 **Badge**: Clipboard with checkmark
+**Activity Type**: Ordering/Sequence
+**Scenario**: Mentor preparing to submit their application
+
+---
+
+### S2-Intro: Applications List Page
+
+**Screen**: Applications main page showing archived/submitted applications
+**Effect**: Avatar pops in for page introduction
+**Elements**:
+- "Applications" heading
+- "Archived" section showing submitted applications
+- Application card with company name, status (Approved), dates
+
+**Video Narration** (Draft - ~15 seconds):
+> "The Applications page shows all your submitted and archived applications. Here you can see your application status, when it was submitted, and when it was approved. Let's click into an application to see what information is required."
+
+**After Video**:
+- Continue button appears
+- Simulates clicking into the application
+- Advances to New Application page
+
+---
+
+### S2-Transition: Enter Application Details
+
+**Effect**: Transition into the New Application detail view
+**Screen**: Shows progress stepper with all sections
+**Elements visible**:
+- "New Application" heading
+- Progress stepper: Points of Contact → Company Information → Eligibility → Historical Background → DoD Contracts → Development Assistance → Terms and Conditions → Review
+
+**Video Narration** (Draft - ~12 seconds):
+> "When you open an application, you'll see a step-by-step progress tracker at the top. Each section must be completed before you can submit. Green checkmarks show which sections are done. Let's walk through each one."
+
+**After Video**:
+- Advances to first hotspot
+
+---
+
+### S2-H1: Point of Contact
+
+**Hotspot Area**: "Point of Contact" section (blue header + content)
+**Location**: First section on the page
+**Highlight**: Glowing box around section
+**Fields visible**:
+- POC Name
+- Title
+- Email
+- Phone
+
+**Video Narration** (Draft - ~12 seconds):
+> "The Point of Contact section identifies who the MPP program should reach out to regarding your application. Include the name, title, email, and phone number of your primary contact. This is usually a company executive or program manager."
+
+**Interaction**:
+- User clicks hotspot or Continue
+- Advances to next hotspot (S2-H2)
+
+---
+
+### S2-H2: Company Information
+
+**Hotspot Area**: "Company Information" section (blue header + content)
+**Location**: Below Point of Contact
+**Highlight**: Glowing box around section
+**Fields visible**:
+- Company Name
+- Address
+- Other company details
+
+**Video Narration** (Draft - ~12 seconds):
+> "Company Information captures your official business details — your company name, address, and other identifying information. Make sure this matches your SAM registration to avoid any processing delays."
+
+**Interaction**:
+- User clicks hotspot or Continue
+- Scroll transition to next section
+
+---
+
+### S2-H3: Eligibility
+
+**Hotspot Area**: "Eligibility" section (blue header + content)
+**Location**: Below Company Information
+**Highlight**: Glowing box around section
+**Fields visible**:
+- Company classification (Small Business, Native Hawaiian, Indian Tribe, SDVOB)
+- Federal contract eligibility (YES/NO)
+- Prime contractor status (YES/NO)
+- DoD contracts ≥$25M threshold (YES/NO)
+- Submitted Documents
+
+**Video Narration** (Draft - ~18 seconds):
+> "The Eligibility section determines whether your company qualifies for the program. You'll indicate your business classification — such as small business, veteran-owned, or tribal entity. You'll also answer questions about your federal contracting eligibility and current DoD contract status. Be accurate here — this information is verified during the review process."
+
+**Interaction**:
+- User clicks hotspot or Continue
+- Scroll transition to next section
+
+---
+
+### S2-H4: Historical Background
+
+**Hotspot Area**: "Historical Background" section (blue header + content)
+**Location**: Below Eligibility
+**Highlight**: Glowing box around section
+
+**Video Narration** (Draft - ~12 seconds):
+> "Historical Background asks about your company's past experience and track record. This helps reviewers understand your history with government contracting and any previous participation in mentor-protege or similar programs."
+
+**Interaction**:
+- User clicks hotspot or Continue
+- Scroll transition to next section
+
+---
+
+### S2-H5: DoD Contracts
+
+**Hotspot Area**: "DoD Contracts" section (blue header + content)
+**Location**: Below Historical Background
+**Highlight**: Glowing box around section
+**Fields visible**:
+- DoD Contracts amounts (FY23, FY24)
+- DoD Subcontracts
+- Subcontracts Awarded to SDBs
+- Total DoD Contracts & Subcontracts
+- Federal Agency Contracts/Subcontracts
+
+**Video Narration** (Draft - ~15 seconds):
+> "The DoD Contracts section tracks your defense contracting activity. You'll report your contract and subcontract values for the past two fiscal years, broken down by DoD and other federal agencies. This data helps the program understand your current business volume and capacity."
+
+**Interaction**:
+- User clicks hotspot or Continue
+- Scroll transition to next section
+
+---
+
+### S2-H6: Development Assistance
+
+**Hotspot Area**: "Development Assistance" section (blue header + content)
+**Location**: Below DoD Contracts
+**Highlight**: Glowing box around section
+**Fields visible**:
+- Explanation field
+- Submitted Documents (file uploads)
+
+**Video Narration** (Draft - ~15 seconds):
+> "Development Assistance is where you describe what kind of support you're seeking — or offering, if you're a mentor. You can provide an explanation of your development goals and upload supporting documents like capability statements or slick sheets that showcase your company."
+
+**Interaction**:
+- User clicks hotspot or Continue
+- Scroll transition to final section
+
+---
+
+### S2-H7: Application Status
+
+**Hotspot Area**: "Application Status" section (blue header + content)
+**Location**: Bottom of the application
+**Highlight**: Glowing box around section
+**Fields visible**:
+- Status explanation text
+- Reviewer's Decision for Agreement (Approved/Declined/Flagged)
+- Comments from reviewer
+- Attachments
+
+**Video Narration** (Draft - ~18 seconds):
+> "The Application Status section shows where your application stands in the review process. Once a reviewer has evaluated your submission, you'll see their decision here — Approved, Declined, or Flagged for follow-up. Any comments or feedback from the reviewer will appear below, along with any attachments they've included. Congratulations messages mean you're ready to participate!"
+
+**Interaction**:
+- User clicks hotspot or Continue
+- Advances to activity
+
+---
+
+### S2-Activity: Applications Challenge
+
+**Screen**: Activity popup overlay
+**Type**: Ordering/Sequence
+**Badge**: Clipboard with checkmark
+
+**Scenario Setup**:
+> "You're a mentor company preparing to submit your MPP application for the first time. You want to make sure you complete all sections in the right order."
+
+**Question**:
+> "Put these application sections in the correct order from START to FINISH:"
+
+**Items to Order**:
+1. Point of Contact
+2. Company Information
+3. Eligibility
+4. Historical Background
+5. DoD Contracts
+6. Development Assistance
+7. Review & Submit
+
+**Correct Order**: 1 → 2 → 3 → 4 → 5 → 6 → 7
+
+**Feedback (Correct)**:
+> "Perfect! You've got the application flow down. Starting with your Point of Contact and working through each section ensures a complete submission that reviewers can process quickly."
+
+**Feedback (Incorrect)**:
+> "Not quite. The correct order follows the progress stepper: Point of Contact → Company Information → Eligibility → Historical Background → DoD Contracts → Development Assistance → Review & Submit."
+
+**On Completion**:
+- +1 point added to progress tracker (2/6)
+- Badge awarded: Clipboard with checkmark
+- Return to Section Selection Hub (B2)
+- Applications card greyed with badge overlay
 
 ---
 
