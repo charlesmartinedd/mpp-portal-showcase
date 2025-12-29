@@ -1119,13 +1119,94 @@
 
 ## Section 4: Team Information
 
-_Walk through with user - TBD_
-
-**Sub-pages to cover**: _TBD_
-**Hotspots**: _TBD_
-**Scenario**: _TBD_
-**Activity Type**: _TBD_
 **Badge**: People/handshake
+**Activity Type**: True/False
+**Scenario**: Understanding team roles and collaboration
+
+---
+
+### S4-Intro: Team Information Overview
+
+**Screen**: Team Information main page
+**Effect**: Avatar pops in for page introduction
+**Elements**:
+- "Team Information" heading
+- Company team section
+- Agreement Teams section below
+
+**Video Narration** (Draft - ~15 seconds):
+> "The Team Information page shows who's involved in your MPP participation. You'll see your company's team members at the top, and below that, the teams associated with each of your active agreements. Let's take a closer look."
+
+**After Video**:
+- Continue button appears
+- Advances to first hotspot
+
+---
+
+### S4-H1: Company Team
+
+**Hotspot Area**: Main company team section (top)
+**Highlight**: Glowing box around team member cards/list
+**Content**:
+- Company name heading
+- Team members with names, roles, contact info
+- Add/edit team member options
+
+**Video Narration** (Draft - ~15 seconds):
+> "Your Company Team section displays the key people involved in your MPP activities. This typically includes your primary point of contact, program managers, and any other team members who work on mentor-protege partnerships. Keep this list updated so everyone has access to the portal and stays informed."
+
+**Interaction**:
+- User clicks hotspot or Continue
+- Advances to next hotspot (S4-H2)
+
+---
+
+### S4-H2: Agreement Teams
+
+**Hotspot Area**: Agreement Teams section (below company team)
+**Highlight**: Glowing box around Agreement Teams area
+**Content**:
+- List of agreements with assigned team members
+- Team member assignments per agreement
+- Roles for each agreement
+
+**Video Narration** (Draft - ~18 seconds):
+> "The Agreement Teams section shows which team members are assigned to each of your active agreements. This is important for larger organizations managing multiple partnerships — you can assign different people to different agreements based on their expertise or availability. Each team member can be given specific roles and responsibilities for their assigned agreements."
+
+**Interaction**:
+- User clicks hotspot or Continue
+- Advances to activity
+
+---
+
+### S4-Activity: Team Information Challenge
+
+**Screen**: Activity popup overlay
+**Type**: True/False
+**Badge**: People/handshake
+
+**Scenario Setup**:
+> "You've just been assigned as the new MPP coordinator for your company. Your manager asks you some questions about how team management works in the portal."
+
+**Questions**:
+
+**Q1**: "Each agreement can have different team members assigned to it."
+- **Answer**: TRUE
+- **Explanation**: "Correct! You can assign specific team members to specific agreements, allowing for specialized management of multiple partnerships."
+
+**Q2**: "Only one person from your company can access the MPP Portal."
+- **Answer**: FALSE
+- **Explanation**: "False! You can add multiple team members to your company's portal access. This ensures continuity and collaboration."
+
+**Q3**: "Team member information should be updated when someone leaves or joins your MPP team."
+- **Answer**: TRUE
+- **Explanation**: "Correct! Keeping your team information current ensures the right people have access and receive important communications."
+
+**On Completion**:
+- +1 point added to progress tracker (4/6)
+- Badge awarded: People/handshake
+- Return to Section Selection Hub (B2)
+- Team Information card greyed with badge overlay
 
 ---
 
